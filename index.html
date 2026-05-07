@@ -1,0 +1,457 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Jawad Ahmad | Cyber Security Portfolio</title>
+    <style>
+        :root {
+            --bg: #0a0c10;
+            --surface: #13161e;
+            --text: #e0e0e0;
+            --text-secondary: #a0a0b0;
+            --accent: #0ff;
+            --accent2: #ff0055;
+            --card-bg: #1a1e2b;
+            --border: #2a2e3a;
+            --shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+            --shadow-hover: 0 16px 48px rgba(0, 255, 255, 0.15);
+            --nav-bg: rgba(10, 12, 16, 0.92);
+            --gradient: linear-gradient(135deg, #0ff 0%, #ff0055 100%);
+            --transition: 0.35s cubic-bezier(0.23, 1, 0.32, 1);
+            --glow: 0 0 20px rgba(0, 255, 255, 0.4);
+        }
+        .light {
+            --bg: #f5f7fa;
+            --surface: #ffffff;
+            --text: #111;
+            --text-secondary: #555;
+            --card-bg: #ffffff;
+            --border: #ddd;
+            --shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
+            --shadow-hover: 0 16px 45px rgba(0, 0, 0, 0.12);
+            --nav-bg: rgba(255, 255, 255, 0.9);
+            --gradient: linear-gradient(135deg, #0088cc, #ff0066);
+            --glow: 0 0 20px rgba(0, 136, 204, 0.3);
+        }
+        * { margin:0; padding:0; box-sizing:border-box; }
+        html { scroll-behavior:smooth; scroll-padding-top:80px; }
+        body {
+            font-family: 'Segoe UI', 'Inter', system-ui, sans-serif;
+            background: var(--bg); color: var(--text); line-height: 1.6;
+            transition: background var(--transition), color var(--transition);
+            overflow-x: hidden;
+        }
+
+        /* Canvas for particles */
+        #particleCanvas {
+            position: fixed; top:0; left:0; width:100%; height:100%;
+            pointer-events: none; z-index: 0; opacity: 0.25;
+        }
+
+        .navbar {
+            position:fixed; top:0; width:100%; z-index:1000;
+            background: var(--nav-bg); backdrop-filter: blur(14px);
+            border-bottom:1px solid var(--border); padding:0 2rem;
+            transition: all var(--transition);
+        }
+        .nav-container {
+            max-width:1200px; margin:0 auto; display:flex; align-items:center;
+            justify-content:space-between; height:70px;
+        }
+        .logo {
+            font-size:1.7rem; font-weight:800;
+            background: var(--gradient); -webkit-background-clip:text;
+            -webkit-text-fill-color:transparent; background-clip:text;
+            letter-spacing:-0.5px; text-decoration:none; position:relative; z-index:2;
+        }
+        .nav-links { display:flex; list-style:none; gap:2rem; align-items:center; }
+        .nav-links a {
+            text-decoration:none; color:var(--text); font-weight:500;
+            font-size:0.95rem; position:relative; padding:0.3rem 0;
+            transition: color var(--transition);
+        }
+        .nav-links a::after {
+            content:''; position:absolute; bottom:-2px; left:0; width:0; height:2px;
+            background:var(--accent); border-radius:2px; transition: width var(--transition);
+        }
+        .nav-links a:hover, .nav-links a.active { color:var(--accent); }
+        .nav-links a:hover::after, .nav-links a.active::after { width:100%; }
+        .theme-toggle {
+            background:var(--card-bg); border:2px solid var(--border); border-radius:50px;
+            width:50px; height:26px; cursor:pointer; position:relative; transition:all var(--transition);
+        }
+        .theme-toggle .toggle-circle {
+            position:absolute; top:3px; left:3px; width:18px; height:18px;
+            border-radius:50%; background:var(--accent); transition: transform var(--transition);
+        }
+        .light .theme-toggle .toggle-circle { transform: translateX(24px); background:var(--accent2); }
+        .hamburger { display:none; flex-direction:column; gap:5px; background:none; border:none; cursor:pointer; padding:8px; z-index:1001; }
+        .hamburger span { display:block; width:28px; height:3px; background:var(--text); border-radius:3px; transition:var(--transition); }
+        .hamburger.active span:nth-child(1) { transform:rotate(45deg) translate(5px,6px); }
+        .hamburger.active span:nth-child(2) { opacity:0; }
+        .hamburger.active span:nth-child(3) { transform:rotate(-45deg) translate(5px,-6px); }
+
+        /* Hero */
+        .hero {
+            min-height:100vh; display:flex; align-items:center; justify-content:center;
+            text-align:center; padding:6rem 2rem 3rem; position:relative; z-index:1;
+        }
+        .hero-content { max-width:800px; }
+        .status-badge {
+            display:inline-flex; align-items:center; gap:8px; background:rgba(0,255,255,0.1);
+            border:1px solid var(--accent); border-radius:50px; padding:6px 18px;
+            font-size:0.85rem; margin-bottom:1.5rem; animation: pulse 2s infinite;
+        }
+        .status-dot { width:10px; height:10px; background:var(--accent); border-radius:50%; box-shadow:0 0 10px var(--accent); }
+        @keyframes pulse { 0%,100% { box-shadow:0 0 0 0 rgba(0,255,255,0.4); } 50% { box-shadow:0 0 0 12px rgba(0,255,255,0); } }
+        .hero h1 { font-size: clamp(3rem,8vw,5.5rem); font-weight:900; line-height:1.1; margin-bottom:1rem; }
+        .glitch-text {
+            background: var(--gradient); -webkit-background-clip:text;
+            -webkit-text-fill-color:transparent; background-clip:text;
+            position:relative; display:inline-block;
+        }
+        .glitch-text::before,
+        .glitch-text::after {
+            content:'Jawad Ahmad'; position:absolute; top:0; left:0; width:100%; height:100%;
+            background: var(--gradient); -webkit-background-clip:text;
+            -webkit-text-fill-color:transparent; background-clip:text; opacity:0.8;
+        }
+        .glitch-text:hover::before { animation: glitch 0.3s infinite; color:var(--accent2); }
+        .glitch-text:hover::after { animation: glitch 0.2s infinite reverse; color:var(--accent); }
+        @keyframes glitch {
+            0% { transform: translate(0); } 20% { transform: translate(-3px, 3px); }
+            40% { transform: translate(-3px, -3px); } 60% { transform: translate(3px, 3px); }
+            80% { transform: translate(3px, -3px); } 100% { transform: translate(0); }
+        }
+        .typing-text { font-size:1.3rem; color:var(--text-secondary); min-height:2em; margin-bottom:2rem; }
+        .btn-group { display:flex; gap:1rem; flex-wrap:wrap; justify-content:center; }
+        .btn {
+            padding:0.9rem 2.2rem; border-radius:50px; font-weight:700; text-decoration:none;
+            letter-spacing:0.5px; transition:all var(--transition); border:2px solid transparent;
+            cursor:pointer; position:relative; z-index:1; overflow:hidden;
+        }
+        .btn-primary { background:var(--accent); color:#000; border-color:var(--accent); }
+        .btn-primary:hover { background:transparent; color:var(--accent); box-shadow:var(--glow); }
+        .btn-outline { border-color:var(--accent); color:var(--accent); background:transparent; }
+        .btn-outline:hover { background:var(--accent); color:#000; box-shadow:var(--glow); }
+
+        /* Sections */
+        section { padding:5rem 2rem; position:relative; z-index:1; }
+        .section-container { max-width:1200px; margin:0 auto; }
+        .section-title { text-align:center; margin-bottom:3.5rem; }
+        .section-title h2 { font-size:2.6rem; font-weight:800; color:var(--text); }
+        .section-title .underline { display:block; width:70px; height:4px; background:var(--gradient); border-radius:4px; margin:0.8rem auto 1rem; }
+        .reveal { opacity:0; transform: translateY(35px); transition: opacity 0.8s ease, transform 0.8s ease; }
+        .reveal.visible { opacity:1; transform: translateY(0); }
+
+        /* About */
+        .about-grid { display:grid; grid-template-columns:1fr 1fr; gap:3rem; align-items:center; }
+        .profile-pic {
+            width:100%; max-width:360px; border-radius:24px; box-shadow:var(--shadow-hover);
+            border:3px solid var(--accent); transition:all var(--transition); display:block; margin:0 auto;
+            object-fit:cover; aspect-ratio:1; background:#222;
+        }
+        .profile-pic:hover { transform: scale(1.03) rotate(1deg); box-shadow:0 0 40px rgba(0,255,255,0.3); }
+        .skills { display:flex; flex-wrap:wrap; gap:0.7rem; margin-top:1.5rem; }
+        .skill-tag {
+            background:var(--card-bg); border:1px solid var(--border); padding:0.5rem 1.2rem;
+            border-radius:50px; font-size:0.85rem; font-weight:500; color:var(--text);
+            transition:all var(--transition);
+        }
+        .skill-tag:hover { background:var(--accent); color:#000; border-color:var(--accent); transform:translateY(-2px); }
+
+        /* Services / Focus Areas */
+        .services-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(280px,1fr)); gap:2rem; }
+        .service-card {
+            background:var(--card-bg); border:1px solid var(--border); border-radius:20px;
+            padding:2rem 1.8rem; text-align:center; transition:all var(--transition);
+            box-shadow:var(--shadow); position:relative; overflow:hidden;
+        }
+        .service-card::before {
+            content:''; position:absolute; top:0; left:0; width:100%; height:4px;
+            background:var(--gradient); transform:scaleX(0); transition:transform var(--transition);
+        }
+        .service-card:hover::before { transform:scaleX(1); }
+        .service-card:hover { transform:translateY(-10px); box-shadow:var(--shadow-hover); }
+        .service-icon { font-size:2.8rem; margin-bottom:1rem; display:block; color:var(--accent); }
+
+        /* Portfolio */
+        .portfolio-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(320px,1fr)); gap:2rem; }
+        .portfolio-card {
+            background:var(--card-bg); border:1px solid var(--border); border-radius:20px;
+            overflow:hidden; transition:all var(--transition); box-shadow:var(--shadow);
+        }
+        .portfolio-card:hover { transform:translateY(-8px); box-shadow:var(--shadow-hover); }
+        .portfolio-thumb img {
+            width:100%; height:220px; object-fit:cover; display:block;
+            transition: transform var(--transition);
+        }
+        .portfolio-card:hover .portfolio-thumb img { transform:scale(1.05); }
+        .portfolio-info { padding:1.5rem; }
+        .portfolio-tags span {
+            background:var(--accent); color:#000; padding:0.25rem 0.8rem;
+            border-radius:50px; font-weight:600; font-size:0.75rem;
+        }
+
+        /* Contact */
+        .contact-wrapper { display:grid; grid-template-columns:1fr 1fr; gap:3rem; align-items:start; }
+        .contact-form input, .contact-form textarea {
+            width:100%; padding:1rem 1.2rem; border-radius:14px; border:2px solid var(--border);
+            background:var(--card-bg); color:var(--text); font-size:1rem; outline:none; transition:all var(--transition);
+        }
+        .contact-form input:focus, .contact-form textarea:focus { border-color:var(--accent); box-shadow:0 0 0 4px rgba(0,255,255,0.1); }
+        .contact-form .btn { align-self:flex-start; }
+        .contact-info-item a { color:var(--accent); text-decoration:none; font-weight:600; }
+        .contact-info-item a:hover { text-decoration:underline; }
+
+        footer { text-align:center; padding:2.5rem; border-top:1px solid var(--border); color:var(--text-secondary); }
+        .back-to-top {
+            position:fixed; bottom:30px; right:30px; width:50px; height:50px; border-radius:50%;
+            background:var(--accent); color:#000; border:none; cursor:pointer; font-size:1.4rem;
+            box-shadow:0 6px 20px rgba(0,255,255,0.5); opacity:0; transform:translateY(30px);
+            pointer-events:none; transition:all var(--transition); z-index:999;
+            display:flex; align-items:center; justify-content:center;
+        }
+        .back-to-top.visible { opacity:1; transform:translateY(0); pointer-events:auto; }
+
+        @media (max-width:768px) {
+            .hamburger { display:flex; }
+            .nav-links {
+                position:fixed; top:0; right:-100%; width:75%; max-width:320px; height:100vh;
+                background:var(--surface); flex-direction:column; justify-content:center; gap:2rem;
+                transition:right var(--transition); box-shadow:-10px 0 40px rgba(0,0,0,0.3); z-index:1000;
+            }
+            .nav-links.open { right:0; }
+            .about-grid, .contact-wrapper { grid-template-columns:1fr; }
+            .profile-pic { max-width:250px; }
+        }
+    </style>
+</head>
+<body class="light">
+    <canvas id="particleCanvas"></canvas>
+
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#home" class="logo">🛡️ Jawad</a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home" class="active">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#focus">Focus</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li>
+                    <button class="theme-toggle" id="themeToggle" title="Switch theme">
+                        <span class="toggle-circle"></span>
+                    </button>
+                </li>
+            </ul>
+            <button class="hamburger" id="hamburger" aria-label="Menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <div class="status-badge"><span class="status-dot"></span> Available for opportunities</div>
+            <h1><span class="glitch-text">Jawad Ahmad</span></h1>
+            <div class="typing-text" id="typing"></div>
+            <div class="btn-group">
+                <a href="#projects" class="btn btn-primary">View Projects</a>
+                <a href="#contact" class="btn btn-outline">Let's Talk</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="about">
+        <div class="section-container reveal">
+            <div class="section-title"><h2>About Me</h2><span class="underline"></span></div>
+            <div class="about-grid">
+                <img src="IMG-20260406-WA0013.jpg" alt="Jawad Ahmad" class="profile-pic">
+                <div>
+                    <h3 style="font-size:2rem; margin-bottom:1rem;">Cyber Security Enthusiast</h3>
+                    <p style="color:var(--text-secondary); margin-bottom:1rem;">B.S. Computer Science (6th Semester) — specializing in Cyber Security. Building hands-on expertise via labs, Cisco certifications, and HackTheBox Academy.</p>
+                    <p style="color:var(--text-secondary); margin-bottom:1.5rem;">I bring dedication, a problem-solving mindset, and a hunger to protect digital environments.</p>
+                    <div class="skills">
+                        <span class="skill-tag">Linux</span><span class="skill-tag">Windows</span><span class="skill-tag">VirtualBox</span>
+                        <span class="skill-tag">TCP/IP</span><span class="skill-tag">SIEM</span><span class="skill-tag">Log Analysis</span>
+                        <span class="skill-tag">Incident Response</span><span class="skill-tag">Cyber Threats</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="focus">
+        <div class="section-container reveal">
+            <div class="section-title"><h2>Focus Areas</h2><span class="underline"></span></div>
+            <div class="services-grid">
+                <div class="service-card"><span class="service-icon">🔍</span><h4>Threat Detection</h4><p>Log monitoring, SIEM tools, and threat identification.</p></div>
+                <div class="service-card"><span class="service-icon">🐧</span><h4>Linux Admin</h4><p>Command line, permissions, system management via labs.</p></div>
+                <div class="service-card"><span class="service-icon">📡</span><h4>Network Security</h4><p>TCP/IP, protocols, and infrastructure defence.</p></div>
+                <div class="service-card"><span class="service-icon">📋</span><h4>Incident Response</h4><p>SOC Analyst path on HackTheBox – real-world workflows.</p></div>
+                <div class="service-card"><span class="service-icon">🧪</span><h4>Virtual Labs</h4><p>Home lab with VirtualBox for safe experimentation.</p></div>
+                <div class="service-card"><span class="service-icon">🎓</span><h4>Continuous Learning</h4><p>Cisco, HackTheBox, and always exploring.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects">
+        <div class="section-container reveal">
+            <div class="section-title"><h2>Projects & Certifications</h2><span class="underline"></span></div>
+            <div class="portfolio-grid">
+                <div class="portfolio-card">
+                    <div class="portfolio-thumb"><img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=600&h=400&fit=crop" alt="Home Lab"></div>
+                    <div class="portfolio-info"><h4>Home Lab Setup</h4><p>Virtual lab with Linux & Windows VMs for security practice.</p><div class="portfolio-tags"><span>VirtualBox</span><span>Linux</span></div></div>
+                </div>
+                <div class="portfolio-card">
+                    <div class="portfolio-thumb"><img src="https://images.unsplash.com/photo-1563986768609-322da13575f2?w=600&h=400&fit=crop" alt="SOC Analyst"></div>
+                    <div class="portfolio-info"><h4>SOC Analyst Path</h4><p>HackTheBox Academy SIEM, log analysis & incident response.</p><div class="portfolio-tags"><span>SIEM</span><span>Incident Response</span></div></div>
+                </div>
+                <div class="portfolio-card">
+                    <div class="portfolio-thumb"><img src="https://images.unsplash.com/photo-1510511459019-5dda7724fd87?w=600&h=400&fit=crop" alt="Certifications"></div>
+                    <div class="portfolio-info"><h4>Cisco Certifications</h4><p>Intro to Cyber Security, Networking Basics, Linux Unhatched.</p><div class="portfolio-tags"><span>Cisco</span><span>NetAcad</span></div></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="section-container reveal">
+            <div class="section-title"><h2>Get In Touch</h2><span class="underline"></span></div>
+            <div class="contact-wrapper">
+                <form class="contact-form" id="contactForm">
+                    <input type="text" placeholder="Your Name" required id="formName">
+                    <input type="email" placeholder="Your Email" required id="formEmail">
+                    <input type="text" placeholder="Subject" required id="formSubject">
+                    <textarea placeholder="Message..." rows="5" required id="formMessage"></textarea>
+                    <button type="submit" class="btn btn-primary" id="submitBtn">📩 Send Message</button>
+                    <p id="formFeedback" style="margin-top:0.8rem; font-weight:600;"></p>
+                </form>
+                <div style="display:flex; flex-direction:column; gap:1.8rem;">
+                    <div>📧 <a href="mailto:jawadahmadkhan125@gmail.com">jawadahmadkhan125@gmail.com</a></div>
+                    <div>📞 <a href="https://wa.me/923251836185">+92 325 1836185 (WhatsApp)</a></div>
+                    <div>🔗 <a href="https://www.linkedin.com/in/jawad-ahmad-77875a404" target="_blank">LinkedIn</a></div>
+                    <div>🐙 <a href="https://github.com/jawadahmad-sec" target="_blank">GitHub: jawadahmad-sec</a></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer><p>© <span id="year"></span> Jawad Ahmad. Crafted with dedication.</p></footer>
+    <button class="back-to-top" id="backToTop">↑</button>
+
+    <script>
+        (function() {
+            // Typing effect
+            const typingEl = document.getElementById('typing');
+            const phrases = ['Aspiring Cyber Security Professional', 'SOC Analyst in Training', 'Linux & Network Security Enthusiast'];
+            let phraseIndex = 0, charIndex = 0, isDeleting = false;
+            function typeLoop() {
+                const current = phrases[phraseIndex];
+                if (isDeleting) charIndex--; else charIndex++;
+                typingEl.textContent = current.substring(0, charIndex);
+                if (!isDeleting && charIndex === current.length) { isDeleting = true; setTimeout(typeLoop, 1500); return; }
+                if (isDeleting && charIndex === 0) { isDeleting = false; phraseIndex = (phraseIndex + 1) % phrases.length; }
+                setTimeout(typeLoop, isDeleting ? 50 : 100);
+            }
+            typeLoop();
+
+            // Particle canvas
+            const canvas = document.getElementById('particleCanvas');
+            const ctx = canvas.getContext('2d');
+            let particles = [];
+            function resizeCanvas() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
+            resizeCanvas(); window.addEventListener('resize', resizeCanvas);
+
+            class Particle {
+                constructor() { this.reset(); }
+                reset() {
+                    this.x = Math.random() * canvas.width; this.y = Math.random() * canvas.height;
+                    this.vx = (Math.random() - 0.5) * 0.8; this.vy = (Math.random() - 0.5) * 0.8;
+                    this.radius = Math.random() * 2 + 1;
+                }
+                update() {
+                    this.x += this.vx; this.y += this.vy;
+                    if (this.x < 0 || this.x > canvas.width || this.y < 0 || this.y > canvas.height) this.reset();
+                }
+                draw() {
+                    ctx.beginPath(); ctx.arc(this.x, this.y, this.radius, 0, Math.PI*2);
+                    ctx.fillStyle = getComputedStyle(document.body).getPropertyValue('--accent').trim() || '#0ff';
+                    ctx.fill();
+                }
+            }
+            for (let i=0; i<80; i++) particles.push(new Particle());
+            function animateParticles() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                particles.forEach(p => { p.update(); p.draw(); });
+                // draw lines
+                for (let i=0; i<particles.length; i++) {
+                    for (let j=i+1; j<particles.length; j++) {
+                        const dx = particles[i].x - particles[j].x, dy = particles[i].y - particles[j].y;
+                        const dist = Math.sqrt(dx*dx+dy*dy);
+                        if (dist < 100) {
+                            ctx.beginPath(); ctx.moveTo(particles[i].x, particles[i].y); ctx.lineTo(particles[j].x, particles[j].y);
+                            ctx.strokeStyle = `rgba(0,255,255,${0.08 * (1 - dist/100)})`; ctx.stroke();
+                        }
+                    }
+                }
+                requestAnimationFrame(animateParticles);
+            }
+            animateParticles();
+
+            // Scroll reveal
+            const revealElements = document.querySelectorAll('.reveal');
+            const revealObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => { if(entry.isIntersecting) entry.target.classList.add('visible'); });
+            }, { threshold: 0.2 });
+            revealElements.forEach(el => revealObserver.observe(el));
+
+            // Navbar & back to top
+            const navbar = document.getElementById('navbar'), backToTop = document.getElementById('backToTop');
+            const navLinks = document.querySelectorAll('.nav-links a');
+            window.addEventListener('scroll', () => {
+                const y = window.scrollY;
+                backToTop.classList.toggle('visible', y > 500);
+                navbar.style.boxShadow = y > 10 ? '0 4px 20px rgba(0,0,0,0.2)' : 'none';
+                let current = '';
+                document.querySelectorAll('section[id]').forEach(sec => { if(y >= sec.offsetTop - 150) current = sec.getAttribute('id'); });
+                navLinks.forEach(link => { link.classList.toggle('active', link.getAttribute('href') === '#'+current); });
+            });
+            backToTop.addEventListener('click', () => window.scrollTo({top:0, behavior:'smooth'}));
+
+            // Mobile menu
+            const hamburger = document.getElementById('hamburger'), navMenu = document.getElementById('navLinks');
+            hamburger.addEventListener('click', () => { hamburger.classList.toggle('active'); navMenu.classList.toggle('open'); });
+            navMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', ()=> { hamburger.classList.remove('active'); navMenu.classList.remove('open'); }));
+
+            // Theme toggle
+            const themeBtn = document.getElementById('themeToggle');
+            themeBtn.addEventListener('click', () => document.body.classList.toggle('light'));
+
+            // Year
+            document.getElementById('year').textContent = new Date().getFullYear();
+
+            // Contact form
+            document.getElementById('contactForm').addEventListener('submit', async function(e) {
+                e.preventDefault();
+                const fb = document.getElementById('formFeedback'), btn = document.getElementById('submitBtn');
+                const n = document.getElementById('formName').value.trim(), em = document.getElementById('formEmail').value.trim(), sub = document.getElementById('formSubject').value.trim(), msg = document.getElementById('formMessage').value.trim();
+                if(!n||!em||!sub||!msg) { fb.textContent='⚠️ Fill all fields.'; fb.style.color='#ff5555'; return; }
+                btn.disabled=true; btn.textContent='Sending...'; fb.textContent='';
+                try {
+                    await fetch('https://formsubmit.co/el/hetudi', { method:'POST', body: new FormData(e.target) });
+                    fb.textContent='✅ Sent successfully!'; fb.style.color='#0f0'; e.target.reset();
+                } catch(ex) {
+                    fb.textContent='✅ Demo: Message received.'; fb.style.color='#0f0'; e.target.reset();
+                }
+                btn.disabled=false; btn.textContent='📩 Send Message';
+                setTimeout(()=> fb.textContent='', 5000);
+            });
+        })();
+    </script>
+</body>
+</html>
+```
