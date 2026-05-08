@@ -3,13 +3,11 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Jawad Ahmad - Cyber Security Professional | SOC Analyst | Penetration Tester | Portfolio" />
-    <meta name="keywords" content="cyber security, SOC analyst, jawad ahmad, penetration testing, ethical hacking, portfolio" />
+    <meta name="description" content="BSCS student building cybersecurity fundamentals with Kali, Parrot, and Metasploitable VMs." />
     <meta name="author" content="Jawad Ahmad" />
-    <meta name="robots" content="index, follow" />
     <meta name="theme-color" content="#0a0a0a" />
-    <title>Jawad Ahmad | Cyber Security Portfolio</title>
-    
+    <title>Jawad Ahmad | Cybersecurity Learner</title>
+    <link rel="stylesheet" href="style.css" />
     <!-- Microsoft Clarity -->
     <script type="text/javascript">
         (function(c,l,a,r,i,t,y){
@@ -18,7 +16,6 @@
             y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
         })(window, document, "clarity", "script", "wnf4wclxlc");
     </script>
-
     <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-8FRVVXB66N"></script>
     <script>
@@ -27,376 +24,6 @@
         gtag('js', new Date());
         gtag('config', 'G-8FRVVXB66N');
     </script>
-
-    <style>
-        :root {
-            --bg: #0a0a0a;
-            --surface: #111111;
-            --surface2: #1a1a1a;
-            --text: #e0e0e0;
-            --text-secondary: #999;
-            --accent: #00ff88;
-            --accent2: #ff3366;
-            --accent3: #00ccff;
-            --card-bg: #141414;
-            --border: #222;
-            --shadow: 0 8px 32px rgba(0,0,0,0.5);
-            --shadow-hover: 0 16px 48px rgba(0,255,136,0.1);
-            --nav-bg: rgba(10,10,10,0.95);
-            --gradient: linear-gradient(135deg, #00ff88 0%, #00ccff 100%);
-            --transition: 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        }
-        
-        * { margin:0; padding:0; box-sizing:border-box; }
-        html { scroll-behavior:smooth; scroll-padding-top:80px; }
-        
-        body {
-            font-family: 'Segoe UI', 'Inter', system-ui, sans-serif;
-            background: var(--bg);
-            color: var(--text);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-        
-        ::-webkit-scrollbar { width: 6px; }
-        ::-webkit-scrollbar-track { background: var(--bg); }
-        ::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 3px; }
-        
-        #particleCanvas {
-            position: fixed; top: 0; left: 0;
-            width: 100%; height: 100%;
-            pointer-events: none; z-index: 0; opacity: 0.4;
-        }
-        
-        .navbar {
-            position: fixed; top: 0; left: 0; width: 100%; z-index: 1000;
-            background: var(--nav-bg); backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(0,255,136,0.1);
-            padding: 0 2rem; transition: all var(--transition);
-        }
-        
-        .nav-container {
-            max-width: 1300px; margin: 0 auto;
-            display: flex; align-items: center;
-            justify-content: space-between; height: 70px;
-        }
-        
-        .logo {
-            font-size: 1.5rem; font-weight: 800;
-            background: var(--gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text; text-decoration: none;
-        }
-        
-        .nav-links { display: flex; list-style: none; gap: 2rem; align-items: center; }
-        
-        .nav-links a {
-            text-decoration: none; color: var(--text-secondary);
-            font-weight: 500; font-size: 0.9rem;
-            text-transform: uppercase; letter-spacing: 1px;
-            padding: 0.5rem 0; transition: all var(--transition);
-        }
-        
-        .nav-links a:hover, .nav-links a.active { color: var(--accent); }
-        
-        .hamburger {
-            display: none; flex-direction: column; gap: 5px;
-            background: none; border: none; cursor: pointer;
-            padding: 8px; z-index: 1001;
-        }
-        
-        .hamburger span {
-            display: block; width: 28px; height: 2px;
-            background: var(--text); transition: all var(--transition);
-        }
-        
-        .hamburger.active span:nth-child(1) {
-            transform: rotate(45deg) translate(5px, 5px); background: var(--accent);
-        }
-        .hamburger.active span:nth-child(2) { opacity: 0; }
-        .hamburger.active span:nth-child(3) {
-            transform: rotate(-45deg) translate(5px, -5px); background: var(--accent);
-        }
-        
-        .hero {
-            min-height: 100vh; display: flex; align-items: center;
-            justify-content: center; text-align: center;
-            padding: 6rem 2rem 3rem; position: relative; z-index: 1;
-        }
-        
-        .hero-content { max-width: 900px; }
-        
-        .badge {
-            display: inline-flex; align-items: center; gap: 10px;
-            background: rgba(0,255,136,0.05); border: 1px solid rgba(0,255,136,0.2);
-            border-radius: 50px; padding: 8px 20px; font-size: 0.85rem;
-            color: var(--accent); margin-bottom: 2rem; letter-spacing: 1px;
-        }
-        
-        .badge-dot {
-            width: 8px; height: 8px; background: var(--accent);
-            border-radius: 50%; animation: pulse-dot 2s infinite;
-        }
-        
-        @keyframes pulse-dot {
-            0%, 100% { box-shadow: 0 0 0 0 rgba(0,255,136,0.7); }
-            50% { box-shadow: 0 0 0 15px rgba(0,255,136,0); }
-        }
-        
-        .hero h1 {
-            font-size: clamp(3rem, 8vw, 5.5rem); font-weight: 900;
-            line-height: 1; margin-bottom: 1.5rem;
-        }
-        
-        .glitch {
-            background: var(--gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        
-        .typing-container {
-            font-size: 1.4rem; color: var(--text-secondary);
-            min-height: 2em; margin-bottom: 2.5rem; font-weight: 300;
-        }
-        
-        .cursor {
-            display: inline-block; width: 3px; height: 1.2em;
-            background: var(--accent); margin-left: 4px;
-            animation: blink 0.7s infinite; vertical-align: text-bottom;
-        }
-        
-        @keyframes blink {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0; }
-        }
-        
-        .btn-group { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; }
-        
-        .btn {
-            padding: 1rem 2.5rem; border-radius: 50px; font-weight: 700;
-            font-size: 0.95rem; text-decoration: none; letter-spacing: 1px;
-            text-transform: uppercase; transition: all var(--transition);
-            border: 2px solid transparent; cursor: pointer;
-        }
-        
-        .btn-primary {
-            background: var(--accent); color: #000; border-color: var(--accent);
-            box-shadow: 0 0 30px rgba(0,255,136,0.2);
-        }
-        
-        .btn-primary:hover {
-            background: transparent; color: var(--accent);
-            box-shadow: 0 0 50px rgba(0,255,136,0.4); transform: translateY(-3px);
-        }
-        
-        .btn-outline { border-color: var(--accent); color: var(--accent); background: transparent; }
-        
-        .btn-outline:hover {
-            background: var(--accent); color: #000;
-            box-shadow: 0 0 50px rgba(0,255,136,0.4); transform: translateY(-3px);
-        }
-        
-        .btn-cv { border-color: var(--accent2); color: var(--accent2); background: transparent; }
-        
-        .btn-cv:hover {
-            background: var(--accent2); color: #fff;
-            box-shadow: 0 0 50px rgba(255,51,102,0.4); transform: translateY(-3px);
-        }
-        
-        section { padding: 5rem 2rem; position: relative; z-index: 1; }
-        .section-container { max-width: 1200px; margin: 0 auto; }
-        
-        .section-title { text-align: center; margin-bottom: 3.5rem; }
-        .section-title h2 { font-size: 2.5rem; font-weight: 800; color: var(--text); }
-        .section-title .underline {
-            display: block; width: 70px; height: 3px;
-            background: var(--gradient); margin: 0.8rem auto 1rem; border-radius: 2px;
-        }
-        .section-title p { color: var(--text-secondary); font-size: 1.05rem; }
-        
-        .reveal {
-            opacity: 0; transform: translateY(40px);
-            transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        }
-        .reveal.visible { opacity: 1; transform: translateY(0); }
-        
-        /* About */
-        .about-grid {
-            display: grid; grid-template-columns: 1fr 1fr;
-            gap: 3rem; align-items: center;
-        }
-        
-        .profile-wrapper { display: flex; justify-content: center; }
-        
-        .profile-img {
-            width: 100%; max-width: 350px; border-radius: 20px;
-            border: 2px solid rgba(0,255,136,0.2);
-            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
-            transition: all var(--transition);
-            object-fit: cover; aspect-ratio: 1;
-        }
-        
-        .profile-img:hover {
-            border-color: var(--accent);
-            box-shadow: 0 20px 80px rgba(0,255,136,0.15);
-            transform: scale(1.02);
-        }
-        
-        .about-text h3 { font-size: 1.8rem; margin-bottom: 1rem; color: var(--text); }
-        .about-text .highlight { color: var(--accent); }
-        .about-text p { color: var(--text-secondary); margin-bottom: 1rem; font-size: 1.02rem; }
-        
-        .skills { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 1.5rem; }
-        
-        .skill-tag {
-            background: var(--surface2); border: 1px solid var(--border);
-            padding: 0.5rem 1.1rem; border-radius: 50px; font-size: 0.85rem;
-            font-weight: 500; color: var(--text); transition: all var(--transition);
-        }
-        
-        .skill-tag:hover {
-            background: rgba(0,255,136,0.1); border-color: var(--accent);
-            color: var(--accent); transform: translateY(-2px);
-        }
-        
-        /* Services */
-        .services-grid {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.8rem;
-        }
-        
-        .service-card {
-            background: var(--card-bg); border: 1px solid var(--border);
-            border-radius: 16px; padding: 2rem 1.8rem; text-align: center;
-            transition: all var(--transition);
-        }
-        
-        .service-card:hover {
-            transform: translateY(-8px); border-color: rgba(0,255,136,0.3);
-            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
-        }
-        
-        .service-icon { font-size: 3rem; margin-bottom: 1rem; display: block; }
-        .service-card h4 { font-size: 1.2rem; margin-bottom: 0.6rem; color: var(--text); }
-        .service-card p { color: var(--text-secondary); font-size: 0.93rem; }
-        
-        /* Projects */
-        .portfolio-grid {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;
-        }
-        
-        .portfolio-card {
-            background: var(--card-bg); border: 1px solid var(--border);
-            border-radius: 16px; overflow: hidden; transition: all var(--transition);
-        }
-        
-        .portfolio-card:hover {
-            transform: translateY(-6px); border-color: rgba(0,255,136,0.3);
-            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
-        }
-        
-        .portfolio-thumb img {
-            width: 100%; height: 220px; object-fit: cover; display: block;
-            transition: transform var(--transition);
-        }
-        
-        .portfolio-card:hover .portfolio-thumb img { transform: scale(1.05); }
-        .portfolio-info { padding: 1.5rem; }
-        .portfolio-info h4 { font-size: 1.15rem; margin-bottom: 0.4rem; color: var(--text); }
-        .portfolio-info p { color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 0.8rem; }
-        .portfolio-tags { display: flex; gap: 0.4rem; flex-wrap: wrap; }
-        .portfolio-tags span {
-            background: rgba(0,255,136,0.1); color: var(--accent);
-            padding: 0.25rem 0.7rem; border-radius: 50px; font-size: 0.75rem; font-weight: 500;
-        }
-        
-        /* Contact */
-        .contact-wrapper {
-            display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start;
-        }
-        
-        .contact-form { display: flex; flex-direction: column; gap: 1rem; }
-        
-        .contact-form input, .contact-form textarea {
-            width: 100%; padding: 1rem 1.2rem; border-radius: 12px;
-            border: 1px solid var(--border); background: var(--surface2);
-            color: var(--text); font-size: 1rem; font-family: inherit;
-            outline: none; transition: all var(--transition);
-        }
-        
-        .contact-form input:focus, .contact-form textarea:focus {
-            border-color: var(--accent); box-shadow: 0 0 0 4px rgba(0,255,136,0.05);
-        }
-        
-        .contact-form textarea { min-height: 140px; resize: vertical; }
-        .contact-form .btn { align-self: flex-start; }
-        
-        .contact-info { display: flex; flex-direction: column; gap: 1.2rem; }
-        
-        .contact-info-item {
-            display: flex; align-items: center; gap: 1rem;
-            padding: 1rem; background: var(--card-bg);
-            border: 1px solid var(--border); border-radius: 12px;
-            text-decoration: none; color: var(--text); transition: all var(--transition);
-        }
-        
-        .contact-info-item:hover {
-            border-color: var(--accent); transform: translateX(5px);
-        }
-        
-        .contact-info-item .icon {
-            font-size: 1.5rem; width: 45px; height: 45px;
-            border-radius: 10px; background: var(--surface2);
-            display: flex; align-items: center; justify-content: center;
-        }
-        
-        .contact-info-item a {
-            color: var(--accent); text-decoration: none; font-weight: 500;
-        }
-        
-        .form-feedback { margin-top: 0.5rem; font-weight: 600; min-height: 24px; }
-        
-        footer {
-            text-align: center; padding: 2.5rem 2rem;
-            border-top: 1px solid var(--border); color: var(--text-secondary); font-size: 0.9rem;
-        }
-        
-        .back-to-top {
-            position: fixed; bottom: 30px; right: 30px;
-            width: 50px; height: 50px; border-radius: 50%;
-            background: var(--accent); color: #000; border: none;
-            cursor: pointer; font-size: 1.3rem; font-weight: bold;
-            box-shadow: 0 8px 30px rgba(0,255,136,0.3);
-            opacity: 0; transform: translateY(20px); pointer-events: none;
-            transition: all var(--transition); z-index: 999;
-            display: flex; align-items: center; justify-content: center;
-        }
-        
-        .back-to-top.visible {
-            opacity: 1; transform: translateY(0); pointer-events: auto;
-        }
-        
-        .back-to-top:hover {
-            background: #00cc66; transform: translateY(-5px);
-            box-shadow: 0 12px 40px rgba(0,255,136,0.5);
-        }
-        
-        @media (max-width: 768px) {
-            .hamburger { display: flex; }
-            .nav-links {
-                position: fixed; top: 0; right: -100%;
-                width: 80%; max-width: 320px; height: 100vh;
-                background: var(--surface); flex-direction: column;
-                justify-content: center; gap: 2rem;
-                transition: right var(--transition);
-                box-shadow: -10px 0 40px rgba(0,0,0,0.5); z-index: 1000;
-            }
-            .nav-links.open { right: 0; }
-            .about-grid, .contact-wrapper { grid-template-columns: 1fr; }
-            .profile-img { max-width: 250px; margin: 0 auto; }
-        }
-    </style>
 </head>
 <body>
     <canvas id="particleCanvas"></canvas>
@@ -407,8 +34,9 @@
             <ul class="nav-links" id="navLinks">
                 <li><a href="#home" class="active">Home</a></li>
                 <li><a href="#about">About</a></li>
-                <li><a href="#services">Focus</a></li>
-                <li><a href="#portfolio">Projects</a></li>
+                <li><a href="#labs">Lab Setup</a></li>
+                <li><a href="#certificates">Certificates</a></li>
+                <li><a href="#learning">Learning</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
             <button class="hamburger" id="hamburger" aria-label="Menu">
@@ -417,166 +45,176 @@
         </div>
     </nav>
 
+    <!-- Hero -->
     <section class="hero" id="home">
         <div class="hero-content">
             <div class="badge">
-                <span class="badge-dot"></span> Available for Opportunities
+                <span class="badge-dot"></span> Open to Internship Opportunities
             </div>
             <h1><span class="glitch">JAWAD AHMAD</span></h1>
+            <p class="value-prop">
+                BSCS student building practical cybersecurity fundamentals.<br>
+                Working with Kali, Parrot OS, and Metasploitable VMs.
+            </p>
             <div class="typing-container">
                 <span id="typingText"></span><span class="cursor"></span>
             </div>
-            <p style="color:var(--text-secondary); margin-bottom:2rem; max-width:600px; margin-left:auto; margin-right:auto;">
-                Cyber Security Enthusiast | SOC Analyst in Training | Linux & Network Security
-            </p>
             <div class="btn-group">
-                <a href="#portfolio" class="btn btn-primary">View Projects</a>
+                <a href="#labs" class="btn btn-primary">View My Lab</a>
                 <a href="#contact" class="btn btn-outline">Get In Touch</a>
                 <a href="jawad-ahmad-cv.pdf" download class="btn btn-cv" onclick="trackCVDownload()">📄 Download CV</a>
             </div>
         </div>
     </section>
 
+    <!-- About -->
     <section id="about">
         <div class="section-container">
             <div class="section-title reveal">
                 <h2>About Me</h2>
                 <span class="underline"></span>
-                <p>Passionate about protecting digital assets</p>
             </div>
             <div class="about-grid reveal">
                 <div class="profile-wrapper">
-                    <img src="profile.jpg" alt="Jawad Ahmad" class="profile-img" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22350%22 height=%22350%22><rect fill=%22%23111%22 width=%22350%22 height=%22350%22/><text fill=%22%2300ff88%22 x=%22175%22 y=%22175%22 text-anchor=%22middle%22 font-size=%2260%22>JA</text></svg>'">
+                    <img src="profile.jpg" alt="Jawad Ahmad" class="profile-img">
                 </div>
                 <div class="about-text">
-                    <h3>Aspiring <span class="highlight">Cyber Security</span> Professional</h3>
-                    <p>I'm a 6th-semester B.S. Computer Science student specializing in Cyber Security. My passion lies in protecting digital assets, analyzing threats, and building robust security solutions.</p>
-                    <p>Currently developing practical skills through hands-on labs, industry certifications, and real-world security challenges. I bring dedication, a problem-solving mindset, and an unshakeable commitment to excellence.</p>
+                    <h3><span class="highlight">Cybersecurity</span> student in the learning phase</h3>
+                    <p>
+                        BSCS (6th semester). I am currently building a home lab with virtual machines:
+                        <strong>Kali Linux</strong>, <strong>Parrot OS</strong>, and <strong>Metasploitable 3</strong>.
+                        I'm focusing on understanding how systems work and how to defend them.
+                    </p>
+                    <p>
+                        I am still in the early learning stage – exploring the basics of Linux,
+                        networking, and security. I'm excited to grow and contribute to a SOC team.
+                    </p>
                     <div class="skills">
-                        <span class="skill-tag">Linux Administration</span>
-                        <span class="skill-tag">Network Security</span>
-                        <span class="skill-tag">SIEM Tools</span>
-                        <span class="skill-tag">Log Analysis</span>
-                        <span class="skill-tag">Incident Response</span>
-                        <span class="skill-tag">VirtualBox / VMware</span>
-                        <span class="skill-tag">TCP/IP</span>
-                        <span class="skill-tag">Threat Detection</span>
-                        <span class="skill-tag">Penetration Testing</span>
-                        <span class="skill-tag">Python Scripting</span>
+                        <span class="skill-tag">Linux basics</span>
+                        <span class="skill-tag">Networking fundamentals</span>
+                        <span class="skill-tag">VirtualBox</span>
+                        <span class="skill-tag">Kali Linux</span>
+                        <span class="skill-tag">Parrot OS</span>
+                        <span class="skill-tag">Metasploitable 3</span>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="services">
+    <!-- Lab Setup -->
+    <section id="labs">
         <div class="section-container">
             <div class="section-title reveal">
-                <h2>Focus Areas</h2>
+                <h2>My Home Lab</h2>
                 <span class="underline"></span>
-                <p>What I'm building expertise in</p>
+                <p>The virtual environment I work in every day</p>
             </div>
-            <div class="services-grid">
-                <div class="service-card reveal">
-                    <span class="service-icon">🛡️</span>
-                    <h4>Cyber Defense</h4>
-                    <p>Protecting systems through proactive threat hunting and security monitoring.</p>
-                </div>
-                <div class="service-card reveal">
-                    <span class="service-icon">🔍</span>
-                    <h4>SOC Analysis</h4>
-                    <p>SIEM, log analysis, alert triage, and incident investigation workflows.</p>
-                </div>
-                <div class="service-card reveal">
-                    <span class="service-icon">🐧</span>
-                    <h4>Linux & Networking</h4>
-                    <p>Command-line proficiency, system administration, and network security.</p>
-                </div>
-                <div class="service-card reveal">
-                    <span class="service-icon">🧪</span>
-                    <h4>Virtual Lab Environments</h4>
-                    <p>Building isolated home labs for safe security experimentation.</p>
-                </div>
-                <div class="service-card reveal">
-                    <span class="service-icon">📋</span>
-                    <h4>Incident Response</h4>
-                    <p>Detection, containment, eradication, and recovery from security incidents.</p>
-                </div>
-                <div class="service-card reveal">
-                    <span class="service-icon">🎓</span>
-                    <h4>Continuous Learning</h4>
-                    <p>Cisco, HackTheBox, TryHackMe — always expanding my security knowledge.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="portfolio">
-        <div class="section-container">
-            <div class="section-title reveal">
-                <h2>Projects & Certifications</h2>
-                <span class="underline"></span>
-                <p>Hands-on work that demonstrates my skills</p>
-            </div>
-            <div class="portfolio-grid">
-                <div class="portfolio-card reveal">
-                    <div class="portfolio-thumb">
-                        <img src="Lab for practice.jpeg" alt="Home Lab" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22600%22 height=%22400%22><rect fill=%22%23111%22 width=%22600%22 height=%22400%22/><text fill=%22%2300ff88%22 x=%22300%22 y=%22200%22 text-anchor=%22middle%22 font-size=%2224%22>Home Lab Setup</text></svg>'">
-                    </div>
-                    <div class="portfolio-info">
-                        <h4>Home Lab Setup</h4>
-                        <p>Configured a complete virtual lab with Linux & Windows VMs for security practice.</p>
-                        <div class="portfolio-tags">
-                            <span>VirtualBox</span><span>Linux</span><span>Networking</span>
-                        </div>
+            <div class="labs-grid">
+                <!-- VM card -->
+                <div class="lab-card reveal">
+                    <div class="lab-thumb"><img src="Lab for practice.jpeg" alt="Lab Overview"></div>
+                    <div class="lab-info">
+                        <h4>Virtual Machines</h4>
+                        <ul>
+                            <li><strong>Kali Linux</strong> – for learning security tools</li>
+                            <li><strong>Parrot OS</strong> – another security distribution</li>
+                            <li><strong>Metasploitable 3</strong> – intentionally vulnerable target</li>
+                        </ul>
+                        <div class="lab-tags"><span>VirtualBox</span><span>Kali</span><span>Parrot</span><span>Metasploitable</span></div>
                     </div>
                 </div>
-                <div class="portfolio-card reveal">
-                    <div class="portfolio-thumb">
-                        <img src="TryHackme.jpeg" alt="TryHackMe" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22600%22 height=%22400%22><rect fill=%22%23111%22 width=%22600%22 height=%22400%22/><text fill=%22%2300ccff%22 x=%22300%22 y=%22200%22 text-anchor=%22middle%22 font-size=%2224%22>TryHackMe</text></svg>'">
-                    </div>
-                    <div class="portfolio-info">
-                        <h4>TryHackMe Labs</h4>
-                        <p>Active rooms: penetration testing, privilege escalation, and web security.</p>
-                        <div class="portfolio-tags">
-                            <span>Pentesting</span><span>Web Security</span><span>Priv Esc</span>
-                        </div>
+                <!-- TryHackMe card -->
+                <div class="lab-card reveal">
+                    <div class="lab-thumb"><img src="TryHackme.jpeg" alt="TryHackMe"></div>
+                    <div class="lab-info">
+                        <h4>TryHackMe</h4>
+                        <ul>
+                            <li>Following beginner learning paths</li>
+                            <li>Practicing Linux and networking fundamentals</li>
+                            <li>Reinforcing concepts on the virtual machines</li>
+                        </ul>
+                        <div class="lab-tags"><span>TryHackMe</span></div>
                     </div>
                 </div>
-                <div class="portfolio-card reveal">
-                    <div class="portfolio-thumb">
-                        <img src="HTB Offensive Security.jpeg" alt="HTB Offensive" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22600%22 height=%22400%22><rect fill=%22%23111%22 width=%22600%22 height=%22400%22/><text fill=%22%23ff3366%22 x=%22300%22 y=%22200%22 text-anchor=%22middle%22 font-size=%2224%22>HTB Offensive</text></svg>'">
+                <!-- HTB Starting Point card -->
+                <div class="lab-card reveal">
+                    <div class="lab-thumb"><img src="HTB.jpeg" alt="Hack The Box Starting Point"></div>
+                    <div class="lab-info">
+                        <h4>Hack The Box – Starting Point</h4>
+                        <ul>
+                            <li>Exploring beginner-friendly machines</li>
+                            <li>Learning basic enumeration and exploitation concepts</li>
+                            <li>Building confidence in a safe environment</li>
+                        </ul>
+                        <div class="lab-tags"><span>HackTheBox</span></div>
                     </div>
-                    <div class="portfolio-info">
+                </div>
+                <!-- HTB Offensive Security card -->
+                <div class="lab-card reveal">
+                    <div class="lab-thumb"><img src="HTB Offensive Security.jpeg" alt="HTB Offensive Security"></div>
+                    <div class="lab-info">
                         <h4>HTB Offensive Security</h4>
-                        <p>Exploiting vulnerabilities and understanding red team attacker techniques.</p>
-                        <div class="portfolio-tags">
-                            <span>Exploitation</span><span>Red Team</span><span>HackTheBox</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="portfolio-card reveal">
-                    <div class="portfolio-thumb">
-                        <img src="HTB.jpeg" alt="HTB SOC" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22600%22 height=%22400%22><rect fill=%22%23111%22 width=%22600%22 height=%22400%22/><text fill=%22%23ff6600%22 x=%22300%22 y=%22200%22 text-anchor=%22middle%22 font-size=%2224%22>HTB SOC</text></svg>'">
-                    </div>
-                    <div class="portfolio-info">
-                        <h4>HTB SOC Analyst Path</h4>
-                        <p>SOC Analyst training: SIEM tools, log analysis, incident response workflows.</p>
-                        <div class="portfolio-tags">
-                            <span>SIEM</span><span>Log Analysis</span><span>Blue Team</span>
-                        </div>
+                        <ul>
+                            <li>Exposed to offensive security methodologies</li>
+                            <li>Learning about exploitation in a controlled environment</li>
+                            <li>Understanding how attacks work to better defend systems</li>
+                        </ul>
+                        <div class="lab-tags"><span>HackTheBox</span><span>Offensive</span></div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- Certificates -->
+    <section id="certificates">
+        <div class="section-container">
+            <div class="section-title reveal">
+                <h2>Certifications</h2>
+                <span class="underline"></span>
+                <p>Proof of my foundational knowledge</p>
+            </div>
+            <div class="certs-grid">
+                <div class="cert-card reveal">
+                    <div class="cert-thumb"><img src="Intro To Cyber Security.jpeg" alt="Intro to Cyber Security"></div>
+                    <div class="cert-info"><h4>Introduction to Cyber Security</h4><p>Cisco</p></div>
+                </div>
+                <div class="cert-card reveal">
+                    <div class="cert-thumb"><img src="Linux.jpeg" alt="Linux Unhatched"></div>
+                    <div class="cert-info"><h4>Linux Unhatched</h4><p>Cisco NetAcad</p></div>
+                </div>
+                <div class="cert-card reveal">
+                    <div class="cert-thumb"><img src="Networking Basic.jpeg" alt="Networking Basics"></div>
+                    <div class="cert-info"><h4>Networking Basics</h4><p>Cisco</p></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Currently Learning -->
+    <section id="learning">
+        <div class="section-container">
+            <div class="section-title reveal">
+                <h2>Currently Learning</h2>
+                <span class="underline"></span>
+                <p>What I'm focusing on right now</p>
+            </div>
+            <div class="learning-grid">
+                <div class="learning-card reveal">🐧<h4>Linux Administration</h4><p>Command line, users, permissions</p></div>
+                <div class="learning-card reveal">📊<h4>SOC Fundamentals</h4><p>Log analysis, alert triage concepts</p></div>
+                <div class="learning-card reveal">🌐<h4>Networking Deep Dive</h4><p>TCP/IP, subnetting, basic firewalls</p></div>
+                <div class="learning-card reveal">🛡️<h4>Blue Team Tools</h4><p>Exploring security monitoring and SIEM basics</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
     <section id="contact">
         <div class="section-container">
             <div class="section-title reveal">
-                <h2>Get In Touch</h2>
+                <h2>Contact</h2>
                 <span class="underline"></span>
-                <p>Have a project or opportunity? Let's talk!</p>
             </div>
             <div class="contact-wrapper reveal">
                 <form class="contact-form" id="contactForm" action="https://formsubmit.co/jawadahmadkhan125@gmail.com" method="POST">
@@ -585,194 +223,25 @@
                     <input type="email" name="email" id="formEmail" placeholder="Your Email" required>
                     <input type="text" name="subject" id="formSubject" placeholder="Subject" required>
                     <textarea name="message" id="formMessage" placeholder="Your Message..." required></textarea>
-                    <button type="submit" class="btn btn-primary" id="submitBtn">📩 Send Message</button>
+                    <button type="submit" class="btn btn-primary">📩 Send Message</button>
                     <p class="form-feedback" id="formFeedback"></p>
                 </form>
-                <div class="contact-info">
-                    <a href="mailto:jawadahmadkhan125@gmail.com" class="contact-info-item">
-                        <span class="icon">📧</span>
-                        <span>jawadahmadkhan125@gmail.com</span>
-                    </a>
-                    <a href="https://wa.me/923251836185" target="_blank" class="contact-info-item">
-                        <span class="icon">💬</span>
-                        <span>+92 325 1836185 (WhatsApp)</span>
-                    </a>
-                    <a href="https://www.linkedin.com/in/jawad-ahmad-77875a404" target="_blank" class="contact-info-item">
-                        <span class="icon">🔗</span>
-                        <span>LinkedIn Profile</span>
-                    </a>
-                    <a href="https://github.com/jawadahmad-sec" target="_blank" class="contact-info-item">
-                        <span class="icon">🐙</span>
-                        <span>GitHub: jawadahmad-sec</span>
-                    </a>
-                    <a href="https://www.credly.com/users/jawad-ahmad.2094c244" target="_blank" class="contact-info-item">
-                        <span class="icon">🏅</span>
-                        <span>Credly Badges</span>
-                    </a>
+                <div class="contact-links">
+                    <a href="mailto:jawadahmadkhan125@gmail.com" class="contact-link"><span class="icon">📧</span> jawadahmadkhan125@gmail.com</a>
+                    <a href="https://wa.me/923251836185" target="_blank" class="contact-link"><span class="icon">💬</span> WhatsApp</a>
+                    <a href="https://www.linkedin.com/in/jawad-ahmad-77875a404" target="_blank" class="contact-link"><span class="icon">🔗</span> LinkedIn</a>
+                    <a href="https://github.com/jawadahmad-sec" target="_blank" class="contact-link"><span class="icon">🐙</span> GitHub</a>
+                    <a href="https://www.credly.com/users/jawad-ahmad.2094c244" target="_blank" class="contact-link"><span class="icon">🏅</span> Credly Badges</a>
                 </div>
             </div>
         </div>
     </section>
 
     <footer>
-        <p>© 2025 <strong style="color:var(--accent);">Jawad Ahmad</strong>. Built with passion & dedication. | 
-        <span id="visitorCount" style="color:var(--accent);"></span> visits</p>
+        <p>© 2026 <strong>Jawad Ahmad</strong> – Cybersecurity Learner</p>
     </footer>
 
     <button class="back-to-top" id="backToTop">↑</button>
-
-    <script>
-        // Particle Network
-        const canvas = document.getElementById('particleCanvas');
-        const ctx = canvas.getContext('2d');
-        let particles = [];
-        function resizeCanvas() {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        }
-        resizeCanvas();
-        window.addEventListener('resize', resizeCanvas);
-        
-        class Particle {
-            constructor() { this.reset(); }
-            reset() {
-                this.x = Math.random() * canvas.width;
-                this.y = Math.random() * canvas.height;
-                this.vx = (Math.random() - 0.5) * 0.6;
-                this.vy = (Math.random() - 0.5) * 0.6;
-                this.radius = Math.random() * 1.5 + 0.5;
-            }
-            update() {
-                this.x += this.vx; this.y += this.vy;
-                if (this.x < 0 || this.x > canvas.width || this.y < 0 || this.y > canvas.height) this.reset();
-            }
-            draw() {
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-                ctx.fillStyle = '#00ff88'; ctx.fill();
-            }
-        }
-        for (let i = 0; i < 80; i++) particles.push(new Particle());
-        
-        function animate() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            particles.forEach(p => { p.update(); p.draw(); });
-            for (let i = 0; i < particles.length; i++) {
-                for (let j = i + 1; j < particles.length; j++) {
-                    const dx = particles[i].x - particles[j].x;
-                    const dy = particles[i].y - particles[j].y;
-                    const dist = Math.sqrt(dx * dx + dy * dy);
-                    if (dist < 120) {
-                        ctx.beginPath();
-                        ctx.moveTo(particles[i].x, particles[i].y);
-                        ctx.lineTo(particles[j].x, particles[j].y);
-                        ctx.strokeStyle = `rgba(0,255,136,${0.06 * (1 - dist / 120)})`;
-                        ctx.stroke();
-                    }
-                }
-            }
-            requestAnimationFrame(animate);
-        }
-        animate();
-
-        // Typing Effect
-        const typingEl = document.getElementById('typingText');
-        const phrases = ['Cyber Security Professional', 'SOC Analyst in Training', 'Penetration Tester', 'Linux Enthusiast', 'Lifelong Learner'];
-        let phraseIndex = 0, charIndex = 0, isDeleting = false;
-        function typeLoop() {
-            const current = phrases[phraseIndex];
-            isDeleting ? charIndex-- : charIndex++;
-            typingEl.textContent = current.substring(0, charIndex);
-            if (!isDeleting && charIndex === current.length) {
-                isDeleting = true; setTimeout(typeLoop, 2000); return;
-            }
-            if (isDeleting && charIndex === 0) {
-                isDeleting = false; phraseIndex = (phraseIndex + 1) % phrases.length;
-            }
-            setTimeout(typeLoop, isDeleting ? 40 : 90);
-        }
-        typeLoop();
-
-        // Visitor Counter
-        let visits = localStorage.getItem('jawad_visits') || 0;
-        visits++;
-        localStorage.setItem('jawad_visits', visits);
-        document.getElementById('visitorCount').textContent = visits;
-
-        // Scroll Reveal
-        const revealElements = document.querySelectorAll('.reveal');
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) entry.target.classList.add('visible');
-            });
-        }, { threshold: 0.15 });
-        revealElements.forEach(el => observer.observe(el));
-
-        // Navbar & Back to Top
-        const navbar = document.getElementById('navbar');
-        const backToTop = document.getElementById('backToTop');
-        const navLinks = document.querySelectorAll('.nav-links a');
-        window.addEventListener('scroll', () => {
-            const y = window.scrollY;
-            backToTop.classList.toggle('visible', y > 500);
-            navbar.style.boxShadow = y > 10 ? '0 4px 30px rgba(0,0,0,0.3)' : 'none';
-            let current = '';
-            document.querySelectorAll('section[id]').forEach(sec => {
-                if (y >= sec.offsetTop - 150) current = sec.getAttribute('id');
-            });
-            navLinks.forEach(link => {
-                link.classList.toggle('active', link.getAttribute('href') === '#' + current);
-            });
-        });
-        backToTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
-
-        // Mobile Menu
-        const hamburger = document.getElementById('hamburger');
-        const navMenu = document.getElementById('navLinks');
-        hamburger.addEventListener('click', () => {
-            hamburger.classList.toggle('active');
-            navMenu.classList.toggle('open');
-        });
-        navMenu.querySelectorAll('a').forEach(a => {
-            a.addEventListener('click', () => {
-                hamburger.classList.remove('active');
-                navMenu.classList.remove('open');
-            });
-        });
-
-        // CV Download Tracking
-        function trackCVDownload() {
-            if (typeof clarity === 'function') clarity('event', 'cv_download');
-            if (typeof gtag === 'function') {
-                gtag('event', 'download', { event_category: 'CV', event_label: 'Jawad Ahmad CV' });
-            }
-        }
-
-        // Contact Form
-        document.getElementById('contactForm').addEventListener('submit', async function(e) {
-            e.preventDefault();
-            const fb = document.getElementById('formFeedback');
-            const btn = document.getElementById('submitBtn');
-            const n = document.getElementById('formName').value.trim();
-            const em = document.getElementById('formEmail').value.trim();
-            const sub = document.getElementById('formSubject').value.trim();
-            const msg = document.getElementById('formMessage').value.trim();
-            if (!n || !em || !sub || !msg) {
-                fb.textContent = '⚠️ Please fill in all fields.';
-                fb.style.color = '#ff3366'; return;
-            }
-            btn.disabled = true; btn.textContent = '⏳ Sending...'; fb.textContent = '';
-            try {
-                await fetch(this.action, { method: 'POST', body: new FormData(this) });
-                fb.textContent = '✅ Message sent successfully!';
-                fb.style.color = '#00ff88'; this.reset();
-            } catch (err) {
-                fb.textContent = '✅ Message received (demo mode)';
-                fb.style.color = '#00ff88'; this.reset();
-            }
-            btn.disabled = false; btn.textContent = '📩 Send Message';
-            setTimeout(() => { fb.textContent = ''; }, 5000);
-        });
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
