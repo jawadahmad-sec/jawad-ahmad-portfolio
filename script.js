@@ -143,4 +143,3 @@ document.getElementById('contactForm').addEventListener('submit', async function
 function trackCVDownload() {
     if (typeof clarity === 'function') clarity('event', 'cv_download');
     if (typeof gtag === 'function') gtag('event', 'download', { event_category: 'CV' });
-}
