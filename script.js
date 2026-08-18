@@ -1,291 +1,92 @@
-// Particle network
-const canvas = document.getElementById('particleCanvas');
-const ctx = canvas.getContext('2d');
-let particles = [];
-function resizeCanvas() {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-}
-resizeCanvas();
-window.addEventListener('resize', resizeCanvas);
-class Particle {
-    constructor() { this.reset(); }
-    reset() {
-        this.x = Math.random() * canvas.width;
-        this.y = Math.random() * canvas.height;
-        this.vx = (Math.random() - 0.5) * 0.5;
-        this.vy = (Math.random() - 0.5) * 0.5;
-        this.radius = Math.random() * 1.2 + 0.4;
-    }
-    update() {
-        this.x += this.vx;
-        this.y += this.vy;
-        if (this.x < 0 || this.x > canvas.width || this.y < 0 || this.y > canvas.height) this.reset();
-    }
-    draw() {
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, this.radius, 0, Math.PI*2);
-        ctx.fillStyle = '#00ff88';
-        ctx.fill();
-    }
-}
-for(let i=0; i<60; i++) particles.push(new Particle());
-function animateParticles() {
-    ctx.clearRect(0,0,canvas.width,canvas.height);
-    particles.forEach(p => { p.update(); p.draw(); });
-    for(let i=0; i<particles.length; i++) {
-        for(let j=i+1; j<particles.length; j++) {
-            const dx = particles[i].x - particles[j].x;
-            const dy = particles[i].y - particles[j].y;
-            const dist = Math.sqrt(dx*dx+dy*dy);
-            if(dist < 100) {
-                ctx.beginPath();
-                ctx.moveTo(particles[i].x, particles[i].y);
-                ctx.lineTo(particles[j].x, particles[j].y);
-                ctx.strokeStyle = `rgba(0,255,136,${0.04 * (1- dist/100)})`;
-                ctx.stroke();
-            }
-        }
-    }
-    requestAnimationFrame(animateParticles);
-}
-animateParticles();
+// Smooth scroll reveal animation
+const revealElements = document.querySelectorAll('.card, .skill-tag, .section-title, .hero, .about p');
 
-// Typing effect
-const typingEl = document.getElementById('typingText');
-const phrases = ['Linux & Networking Fundamentals', 'SOC Basics & Log Analysis', 'Hands-on Cybersecurity Labs'];
-let phraseIndex = 0, charIndex = 0, isDeleting = false;
-function typeLoop() {
-    const current = phrases[phraseIndex];
-    if (isDeleting) charIndex--;
-    else charIndex++;
-    typingEl.textContent = current.substring(0, charIndex);
-    if (!isDeleting && charIndex === current.length) {
-        isDeleting = true;
-        setTimeout(typeLoop, 2000);
-        return;
-    }
-    if (isDeleting && charIndex === 0) {
-        isDeleting = false;
-        phraseIndex = (phraseIndex + 1) % phrases.length;
-    }
-    setTimeout(typeLoop, isDeleting ? 40 : 90);
-}
-typeLoop();
-
-// Scroll reveal
-const revealElements = document.querySelectorAll('.reveal');
 const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
-        if (entry.isIntersecting) entry.target.classList.add('visible');
-    });
-}, { threshold: 0.15 });
-revealElements.forEach(el => observer.observe(el));
-
-// Navbar & back-to-top
-const navbar = document.getElementById('navbar');
-const backToTop = document.getElementById('backToTop');
-const navLinks = document.querySelectorAll('.nav-links a');
-window.addEventListener('scroll', () => {
-    const y = window.scrollY;
-    backToTop.classList.toggle('visible', y > 500);
-    navbar.style.boxShadow = y > 10 ? '0 4px 30px rgba(0,0,0,0.3)' : 'none';
-    let current = '';
-    document.querySelectorAll('section[id]').forEach(sec => {
-        if (y >= sec.offsetTop - 150) current = sec.getAttribute('id');
-    });
-    navLinks.forEach(link => {
-        link.classList.toggle('active', link.getAttribute('href') === '#' + current);
-    });
-});
-backToTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
-
-// Mobile menu
-const hamburger = document.getElementById('hamburger');
-const navMenu = document.getElementById('navLinks');
-hamburger.addEventListener('click', () => {
-    hamburger.classList.toggle('active');
-    navMenu.classList.toggle('open');
-});
-navMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
-    hamburger.classList.remove('active');
-    navMenu.classList.remove('open');
-}));
-
-// Contact form handling
-document.getElementById('contactForm').addEventListener('submit', async function(e) {
-    e.preventDefault();
-    const fb = document.getElementById('formFeedback');
-    const btn = this.querySelector('button');
-    const name = document.getElementById('formName').value.trim();
-    const email = document.getElementById('formEmail').value.trim();
-    if (!name || !email) {
-        fb.textContent = '⚠️ Please fill required fields.';
-        fb.style.color = '#ff3366';
-        return;
-    }
-    btn.disabled = true;
-    btn.textContent = 'Sending...';
-    try {
-        await fetch(this.action, { method: 'POST', body: new FormData(this) });
-        fb.textContent = '✅ Message sent!';
-        fb.style.color = '#00ff88';
-    } catch {
-        fb.textContent = '✅ Message recorded (demo).';
-        fb.style.color = '#00ff88';
-    }
-    btn.disabled = false;
-    btn.textContent = '📩 Send Message';
-    setTimeout(() => { fb.textContent = ''; }, 5000);
-});
-
-// CV download tracking
-function trackCVDownload() {
-    if (typeof clarity === 'function') clarity('event', 'cv_download');
-    if (typeof gtag === 'function') gtag('event', 'download', { event_category: 'CV' });
-// Particle network
-const canvas = document.getElementById('particleCanvas');
-const ctx = canvas.getContext('2d');
-let particles = [];
-function resizeCanvas() {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-}
-resizeCanvas();
-window.addEventListener('resize', resizeCanvas);
-class Particle {
-    constructor() { this.reset(); }
-    reset() {
-        this.x = Math.random() * canvas.width;
-        this.y = Math.random() * canvas.height;
-        this.vx = (Math.random() - 0.5) * 0.5;
-        this.vy = (Math.random() - 0.5) * 0.5;
-        this.radius = Math.random() * 1.2 + 0.4;
-    }
-    update() {
-        this.x += this.vx;
-        this.y += this.vy;
-        if (this.x < 0 || this.x > canvas.width || this.y < 0 || this.y > canvas.height) this.reset();
-    }
-    draw() {
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, this.radius, 0, Math.PI*2);
-        ctx.fillStyle = '#00ff88';
-        ctx.fill();
-    }
-}
-for(let i=0; i<60; i++) particles.push(new Particle());
-function animateParticles() {
-    ctx.clearRect(0,0,canvas.width,canvas.height);
-    particles.forEach(p => { p.update(); p.draw(); });
-    for(let i=0; i<particles.length; i++) {
-        for(let j=i+1; j<particles.length; j++) {
-            const dx = particles[i].x - particles[j].x;
-            const dy = particles[i].y - particles[j].y;
-            const dist = Math.sqrt(dx*dx+dy*dy);
-            if(dist < 100) {
-                ctx.beginPath();
-                ctx.moveTo(particles[i].x, particles[i].y);
-                ctx.lineTo(particles[j].x, particles[j].y);
-                ctx.strokeStyle = `rgba(0,255,136,${0.04 * (1- dist/100)})`;
-                ctx.stroke();
-            }
+        if (entry.isIntersecting) {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
         }
-    }
-    requestAnimationFrame(animateParticles);
-}
-animateParticles();
-
-// Typing effect
-const typingEl = document.getElementById('typingText');
-const phrases = ['Linux & Networking Fundamentals', 'SOC Basics & Log Analysis', 'Hands-on Cybersecurity Labs'];
-let phraseIndex = 0, charIndex = 0, isDeleting = false;
-function typeLoop() {
-    const current = phrases[phraseIndex];
-    if (isDeleting) charIndex--;
-    else charIndex++;
-    typingEl.textContent = current.substring(0, charIndex);
-    if (!isDeleting && charIndex === current.length) {
-        isDeleting = true;
-        setTimeout(typeLoop, 2000);
-        return;
-    }
-    if (isDeleting && charIndex === 0) {
-        isDeleting = false;
-        phraseIndex = (phraseIndex + 1) % phrases.length;
-    }
-    setTimeout(typeLoop, isDeleting ? 40 : 90);
-}
-typeLoop();
-
-// Scroll reveal
-const revealElements = document.querySelectorAll('.reveal');
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) entry.target.classList.add('visible');
     });
-}, { threshold: 0.15 });
-revealElements.forEach(el => observer.observe(el));
+}, { threshold: 0.1 });
 
-// Navbar & back-to-top
-const navbar = document.getElementById('navbar');
-const backToTop = document.getElementById('backToTop');
+revealElements.forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(20px)';
+    el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    observer.observe(el);
+});
+
+// Active nav link on scroll
 const navLinks = document.querySelectorAll('.nav-links a');
+const sections = document.querySelectorAll('section[id]');
+
 window.addEventListener('scroll', () => {
-    const y = window.scrollY;
-    backToTop.classList.toggle('visible', y > 500);
-    navbar.style.boxShadow = y > 10 ? '0 4px 30px rgba(0,0,0,0.3)' : 'none';
     let current = '';
-    document.querySelectorAll('section[id]').forEach(sec => {
-        if (y >= sec.offsetTop - 150) current = sec.getAttribute('id');
+    sections.forEach(section => {
+        const sectionTop = section.offsetTop - 100;
+        if (window.scrollY >= sectionTop) {
+            current = section.getAttribute('id');
+        }
     });
+
     navLinks.forEach(link => {
-        link.classList.toggle('active', link.getAttribute('href') === '#' + current);
+        link.classList.remove('active');
+        if (link.getAttribute('href') === '#' + current) {
+            link.classList.add('active');
+        }
     });
 });
-backToTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 
-// Mobile menu
-const hamburger = document.getElementById('hamburger');
-const navMenu = document.getElementById('navLinks');
-hamburger.addEventListener('click', () => {
-    hamburger.classList.toggle('active');
-    navMenu.classList.toggle('open');
-});
-navMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
-    hamburger.classList.remove('active');
-    navMenu.classList.remove('open');
-}));
+// Back to top button
+const backToTopBtn = document.createElement('button');
+backToTopBtn.innerHTML = '↑';
+backToTopBtn.style.cssText = `
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: #00ff88;
+    color: #0a0a0a;
+    border: none;
+    font-size: 1.5rem;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 8px 30px rgba(0,255,136,0.3);
+    opacity: 0;
+    transform: translateY(20px);
+    pointer-events: none;
+    transition: all 0.3s ease;
+    z-index: 999;
+`;
 
-// Contact form handling
-document.getElementById('contactForm').addEventListener('submit', async function(e) {
-    e.preventDefault();
-    const fb = document.getElementById('formFeedback');
-    const btn = this.querySelector('button');
-    const name = document.getElementById('formName').value.trim();
-    const email = document.getElementById('formEmail').value.trim();
-    if (!name || !email) {
-        fb.textContent = '⚠️ Please fill required fields.';
-        fb.style.color = '#ff3366';
-        return;
+document.body.appendChild(backToTopBtn);
+
+window.addEventListener('scroll', () => {
+    if (window.scrollY > 500) {
+        backToTopBtn.style.opacity = '1';
+        backToTopBtn.style.transform = 'translateY(0)';
+        backToTopBtn.style.pointerEvents = 'auto';
+    } else {
+        backToTopBtn.style.opacity = '0';
+        backToTopBtn.style.transform = 'translateY(20px)';
+        backToTopBtn.style.pointerEvents = 'none';
     }
-    btn.disabled = true;
-    btn.textContent = 'Sending...';
-    try {
-        await fetch(this.action, { method: 'POST', body: new FormData(this) });
-        fb.textContent = '✅ Message sent!';
-        fb.style.color = '#00ff88';
-    } catch {
-        fb.textContent = '✅ Message recorded (demo).';
-        fb.style.color = '#00ff88';
-    }
-    btn.disabled = false;
-    btn.textContent = '📩 Send Message';
-    setTimeout(() => { fb.textContent = ''; }, 5000);
 });
 
-// CV download tracking
-function trackCVDownload() {
-    if (typeof clarity === 'function') clarity('event', 'cv_download');
-    if (typeof gtag === 'function') gtag('event', 'download', { event_category: 'CV' });
+backToTopBtn.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+
+// Mobile menu toggle (if you add hamburger later)
+const hamburger = document.querySelector('.hamburger');
+const navMenu = document.querySelector('.nav-links');
+
+if (hamburger) {
+    hamburger.addEventListener('click', () => {
+        hamburger.classList.toggle('active');
+        navMenu.classList.toggle('open');
+    });
 }
