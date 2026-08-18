@@ -1,4 +1,4 @@
-// Smooth scroll reveal animation
+// Smooth scroll reveal
 const revealElements = document.querySelectorAll('.card, .skill-tag, .section-title, .hero, .about p');
 
 const observer = new IntersectionObserver((entries) => {
@@ -17,7 +17,7 @@ revealElements.forEach(el => {
     observer.observe(el);
 });
 
-// Active nav link on scroll
+// Active nav link
 const navLinks = document.querySelectorAll('.nav-links a');
 const sections = document.querySelectorAll('section[id]');
 
@@ -38,7 +38,7 @@ window.addEventListener('scroll', () => {
     });
 });
 
-// Back to top button
+// Back to top
 const backToTopBtn = document.createElement('button');
 backToTopBtn.innerHTML = '↑';
 backToTopBtn.style.cssText = `
@@ -79,14 +79,3 @@ window.addEventListener('scroll', () => {
 backToTopBtn.addEventListener('click', () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
 });
-
-// Mobile menu toggle (if you add hamburger later)
-const hamburger = document.querySelector('.hamburger');
-const navMenu = document.querySelector('.nav-links');
-
-if (hamburger) {
-    hamburger.addEventListener('click', () => {
-        hamburger.classList.toggle('active');
-        navMenu.classList.toggle('open');
-    });
-}
