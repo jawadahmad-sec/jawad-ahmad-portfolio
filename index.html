@@ -22,19 +22,35 @@
         </div>
     </nav>
 
+    <!-- Hero Section (with typing effect + badge) -->
     <section class="hero" id="home">
-        <h1>JAWAD AHMAD</h1>
-        <p>BSCS student building practical cybersecurity fundamentals.<br>Working with Kali, Parrot OS, and Metasploitable VMs.</p>
-        <a href="jawad-ahmad-cv.pdf" download class="btn">📄 Download CV</a>
+        <div class="hero-content">
+            <div class="badge">
+                <span class="badge-dot"></span> Open to Internship Opportunities
+            </div>
+            <h1><span class="glitch">JAWAD AHMAD</span></h1>
+            <p class="value-prop">
+                BSCS student building practical cybersecurity fundamentals.<br>
+                Working with Kali, Parrot OS, and Metasploitable VMs.
+            </p>
+            <div class="typing-container">
+                <span id="typingText"></span><span class="cursor"></span>
+            </div>
+            <div class="btn-group">
+                <a href="#certificates" class="btn">View Certificates</a>
+                <a href="jawad-ahmad-cv.pdf" download class="btn">📄 Download CV</a>
+            </div>
+        </div>
     </section>
 
+    <!-- About -->
     <section id="about">
         <div class="container">
             <div class="section-title">
                 <h2>About Me</h2>
                 <span class="underline"></span>
             </div>
-            <p>I'm a BSCS (6th semester) student in the learning phase of cybersecurity. I work with Kali Linux, Parrot OS, and Metasploitable 3 VMs to build foundational security skills.</p>
+            <p>I'm a BSCS (7th semester) student in the learning phase of cybersecurity. I work with Kali Linux, Parrot OS, and Metasploitable 3 VMs to build foundational security skills.</p>
             <div class="skills">
                 <span class="skill-tag">Linux basics</span>
                 <span class="skill-tag">Networking fundamentals</span>
@@ -46,6 +62,7 @@
         </div>
     </section>
 
+    <!-- Certificates -->
     <section id="certificates">
         <div class="container">
             <div class="section-title">
@@ -77,6 +94,7 @@
         </div>
     </section>
 
+    <!-- Labs -->
     <section id="labs">
         <div class="container">
             <div class="section-title">
@@ -108,6 +126,7 @@
         </div>
     </section>
 
+    <!-- Learning -->
     <section id="learning">
         <div class="container">
             <div class="section-title">
@@ -123,24 +142,35 @@
         </div>
     </section>
 
+    <!-- Contact -->
     <section id="contact">
         <div class="container">
             <div class="section-title">
                 <h2>Contact</h2>
                 <span class="underline"></span>
             </div>
-            <div class="contact-links">
-                <a href="mailto:jawadahmadkhan125@gmail.com">📧 Email</a>
-                <a href="https://wa.me/923251836185" target="_blank">💬 WhatsApp</a>
-                <a href="https://www.linkedin.com/in/jawad-ahmad-77875a404" target="_blank">🔗 LinkedIn</a>
-                <a href="https://github.com/jawadahmad-sec" target="_blank">🐙 GitHub</a>
-                <a href="https://www.credly.com/users/jawad-ahmad.2094c244" target="_blank">🏅 Credly</a>
+            <div class="contact-wrapper">
+                <form class="contact-form" action="https://formsubmit.co/jawadahmadkhan125@gmail.com" method="POST">
+                    <input type="hidden" name="_captcha" value="false">
+                    <input type="text" name="name" placeholder="Your Name" required>
+                    <input type="email" name="email" placeholder="Your Email" required>
+                    <input type="text" name="subject" placeholder="Subject" required>
+                    <textarea name="message" placeholder="Your Message..." required></textarea>
+                    <button type="submit" class="btn">📩 Send Message</button>
+                </form>
+                <div class="contact-links">
+                    <a href="mailto:jawadahmadkhan125@gmail.com">📧 Email</a>
+                    <a href="https://wa.me/923251836185" target="_blank">💬 WhatsApp</a>
+                    <a href="https://www.linkedin.com/in/jawad-ahmad-77875a404" target="_blank">🔗 LinkedIn</a>
+                    <a href="https://github.com/jawadahmad-sec" target="_blank">🐙 GitHub</a>
+                    <a href="https://www.credly.com/users/jawad-ahmad.2094c244" target="_blank">🏅 Credly</a>
+                </div>
             </div>
         </div>
     </section>
 
     <footer>
-        <p>© 2025 Jawad Ahmad – Cybersecurity Learner</p>
+        <p>© 2026 Jawad Ahmad – Cybersecurity Learner</p>
     </footer>
 
     <script src="script.js"></script>
