@@ -63,7 +63,7 @@ body {
 .hero-profile {
     width: 20px;
     height: 200px;
-    border-radius: 50%;
+    border-radius: 40%;
     object-fit: cover;
     border: 3px solid #00ff88;
     box-shadow: 0 0 30px rgba(0,255,136,0.3);
