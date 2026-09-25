@@ -1,6 +1,6 @@
 // Typing effect
 const typingEl = document.getElementById('typingText');
-const phrases = ['Linux & Networking Fundamentals', 'SOC Basics & Log Analysis', 'Hands-on Cybersecurity Labs'];
+const phrases = ['Linux & Networking Fundamentals', 'SOC Basics & Log Analysis', 'Building an Open-Source SOC'];
 let phraseIndex = 0, charIndex = 0, isDeleting = false;
 
 function typeLoop() {
@@ -24,7 +24,7 @@ function typeLoop() {
 typeLoop();
 
 // Scroll reveal
-const revealElements = document.querySelectorAll('.card, .skill-tag, .section-title, .hero, .about p');
+const revealElements = document.querySelectorAll('.card, .skill-tag, .section-title, .hero, .fyp-card');
 const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {

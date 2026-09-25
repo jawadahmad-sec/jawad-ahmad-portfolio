@@ -36,13 +36,13 @@ body {
 .nav-links {
     display: flex;
     list-style: none;
-    gap: 2rem;
+    gap: 1.6rem;
 }
 .nav-links a {
     text-decoration: none;
     color: #999;
     font-weight: 600;
-    font-size: 0.85rem;
+    font-size: 0.82rem;
     text-transform: uppercase;
     letter-spacing: 1px;
 }
@@ -63,9 +63,9 @@ body {
 .hero-profile {
     width: 200px;
     height: 200px;
-    border-radius: 80%;
+    border-radius: 50%;
     object-fit: cover;
-    border: 3px solid #00ff88;  
+    border: 3px solid #00ff88;
     box-shadow: 0 0 30px rgba(0,255,136,0.3);
     margin: 0 auto 1.5rem;
     display: block;
@@ -144,6 +144,7 @@ body {
     color: #00ff88;
     transition: all 0.3s;
     cursor: pointer;
+    background: transparent;
 }
 .btn:hover {
     background: #00ff88;
@@ -204,6 +205,66 @@ section {
     color: #999;
     font-size: 0.9rem;
 }
+
+/* FYP Section */
+.fyp-card {
+    background: #141414;
+    border: 2px solid rgba(0,255,136,0.3);
+    border-radius: 16px;
+    padding: 2.5rem;
+    box-shadow: 0 0 40px rgba(0,255,136,0.08);
+}
+.fyp-status {
+    display: inline-block;
+    background: rgba(0,255,136,0.1);
+    color: #00ff88;
+    padding: 0.4rem 1rem;
+    border-radius: 50px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+}
+.fyp-card h3 {
+    font-size: 1.7rem;
+    color: #e0e0e0;
+    margin-bottom: 1rem;
+    line-height: 1.3;
+}
+.fyp-desc {
+    color: #999;
+    margin-bottom: 2rem;
+    font-size: 1rem;
+    line-height: 1.7;
+}
+.fyp-subtitle {
+    color: #00ff88;
+    font-size: 1.05rem;
+    margin-bottom: 0.8rem;
+    margin-top: 1.5rem;
+}
+.fyp-list {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 1rem;
+}
+.fyp-list li {
+    color: #b0b0b0;
+    font-size: 0.95rem;
+    padding-left: 1.5rem;
+    position: relative;
+    margin-bottom: 0.6rem;
+    line-height: 1.5;
+}
+.fyp-list li::before {
+    content: "▹";
+    position: absolute;
+    left: 0;
+    color: #00ff88;
+}
+.fyp-list li strong {
+    color: #e0e0e0;
+}
+
 .skills {
     display: flex;
     flex-wrap: wrap;
@@ -219,6 +280,20 @@ section {
     font-size: 0.85rem;
     font-weight: 600;
     color: #e0e0e0;
+}
+.lab-tags {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.lab-tags span {
+    background: rgba(0,255,136,0.1);
+    color: #00ff88;
+    padding: 0.3rem 0.9rem;
+    border-radius: 50px;
+    font-size: 0.78rem;
+    font-weight: 600;
 }
 .contact-wrapper {
     display: grid;
@@ -273,4 +348,40 @@ footer {
     .hero h1 {
         font-size: 2.5rem;
     }
+    .nav-links {
+        gap: 1rem;
+    }
+    .nav-links a {
+        font-size: 0.7rem;
+    }
+    .fyp-card {
+        padding: 1.5rem;
+    }
+    .fyp-card h3 {
+        font-size: 1.35rem;
+    }
+}
+/* Clickable certification cards */
+.card.clickable {
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+}
+.card.clickable:hover {
+    border-color: #00ff88;
+    box-shadow: 0 0 30px rgba(0,255,136,0.15);
+}
+
+/* Footer note */
+.footer-note {
+    margin-top: 0.6rem;
+    font-size: 0.82rem;
+    color: #666;
+}
+.footer-note a {
+    color: #00ff88;
+    text-decoration: none;
+}
+.footer-note a:hover {
+    text-decoration: underline;
 }
