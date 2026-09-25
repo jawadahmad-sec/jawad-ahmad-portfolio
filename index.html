@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Jawad Ahmad – Cybersecurity Learner Portfolio" />
+    <meta name="description" content="Jawad Ahmad – Cybersecurity Learner | Final Year Project: Open-Source Mini SOC" />
     <meta name="author" content="Jawad Ahmad" />
     <title>Jawad Ahmad | Cybersecurity Learner</title>
     <link rel="stylesheet" href="style.css" />
@@ -14,6 +14,7 @@
             <a href="#home" class="logo">JAWAD.SEC</a>
             <ul class="nav-links">
                 <li><a href="#about">About</a></li>
+                <li><a href="#fyp">FYP</a></li>
                 <li><a href="#certificates">Certificates</a></li>
                 <li><a href="#labs">Labs</a></li>
                 <li><a href="#learning">Learning</a></li>
@@ -22,7 +23,7 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
+    <!-- Hero -->
     <section class="hero" id="home">
         <div class="hero-content">
             <img src="profile.jpg" alt="Jawad Ahmad" class="hero-profile">
@@ -32,13 +33,13 @@
             <h1><span class="glitch">JAWAD AHMAD</span></h1>
             <p class="value-prop">
                 BSCS student building practical cybersecurity fundamentals.<br>
-                Working with Kali, Parrot OS, and Metasploitable VMs.
+                Building an open-source SOC for my Final Year Project.
             </p>
             <div class="typing-container">
                 <span id="typingText"></span><span class="cursor"></span>
             </div>
             <div class="btn-group">
-                <a href="#certificates" class="btn">View Certificates</a>
+                <a href="#fyp" class="btn">View My FYP</a>
                 <a href="jawad-ahmad-cv.pdf" download class="btn">📄 Download CV</a>
             </div>
         </div>
@@ -51,18 +52,37 @@
                 <h2>About Me</h2>
                 <span class="underline"></span>
             </div>
-            <p>I'm a BSCS (7th semester) student in the learning phase of cybersecurity. I work with Kali Linux, Parrot OS, and Metasploitable 3 VMs to build foundational security skills.</p>
+            <p>I'm a BSCS (7th semester) student at the University of Malakand, in the learning phase of cybersecurity. I work with Kali Linux, Parrot OS, and Metasploitable 3 VMs, and I'm currently building an open-source mini SOC as my Final Year Project.</p>
             <div class="skills">
-                <span class="skill-tag">Linux basics</span>
+                <!-- <span class="skill-tag">Linux basics</span>
                 <span class="skill-tag">Networking fundamentals</span>
                 <span class="skill-tag">VirtualBox</span>
                 <span class="skill-tag">Kali Linux</span>
                 <span class="skill-tag">Parrot OS</span>
                 <span class="skill-tag">Metasploitable 3</span>
+                <span class="skill-tag">Suricata IDS</span> -->
             </div>
         </div>
     </section>
 
+<!-- ★ Final Year Project ★ -->
+<section id="fyp">
+    <div class="container">
+        <div class="section-title">
+            <h2>BSCS FYP</h2>
+            <span class="underline"></span>
+        </div>
+        <div class="fyp-card">
+            <h3>Open-Source Mini SOC for Automated Threat Detection</h3>
+            <p class="fyp-desc">
+                Currently building an open-source Security Operations Center using Suricata, Wazuh, and Python.
+            </p>
+            <a href="https://github.com/jawadahmad-sec/open-source-mini-soc-fyp" target="_blank" class="btn">
+                🐙 View on GitHub
+            </a>
+        </div>
+    </div>
+</section>
     <!-- Certificates -->
     <section id="certificates">
         <div class="container">
@@ -111,7 +131,7 @@
                 <div class="card">
                     <img src="TryHackme.jpeg" alt="TryHackMe">
                     <h3>TryHackMe</h3>
-                    <p>Learning paths & fundamentals</p>
+                    <p>Learning paths &amp; fundamentals</p>
                 </div>
                 <div class="card">
                     <img src="HTB.jpeg" alt="HTB">
@@ -138,7 +158,7 @@
                 <div class="card"><h3>🐧 Linux Administration</h3><p>Command line, users, permissions</p></div>
                 <div class="card"><h3>📊 SOC Fundamentals</h3><p>Log analysis, alert triage</p></div>
                 <div class="card"><h3>🌐 Networking Deep Dive</h3><p>TCP/IP, subnetting, firewalls</p></div>
-                <div class="card"><h3>🛡️ Blue Team Tools</h3><p>Security monitoring, SIEM basics</p></div>
+                <div class="card"><h3>🛡️ Blue Team Tools</h3><p>Suricata, Wazuh, SIEM basics</p></div>
             </div>
         </div>
     </section>
