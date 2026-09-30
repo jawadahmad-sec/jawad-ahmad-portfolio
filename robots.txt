@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://jawadahmad-sec.github.io/jawad-ahmad-portfolio/sitemap.xml
