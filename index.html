@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Jawad Ahmad – Cybersecurity Learner | Final Year Project: Open-Source Mini SOC" />
+    <meta name="description" content="Jawad Ahmad – Cybersecurity Learner | FYP: Lightweight Alert Correlation Engine for Mini SOC" />
     <meta name="author" content="Jawad Ahmad" />
     <title>Jawad Ahmad | Cybersecurity Learner</title>
     <link rel="stylesheet" href="style.css" />
@@ -15,9 +15,9 @@
             <ul class="nav-links">
                 <li><a href="#about">About</a></li>
                 <li><a href="#fyp">FYP</a></li>
+                <li><a href="#research">Research</a></li>
                 <li><a href="#certificates">Certificates</a></li>
                 <li><a href="#labs">Labs</a></li>
-                <li><a href="#learning">Learning</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </div>
@@ -33,7 +33,7 @@
             <h1><span class="glitch">JAWAD AHMAD</span></h1>
             <p class="value-prop">
                 BSCS student at University of Malakand.<br>
-                Building an open-source SOC for my Final Year Project.
+                Building a research-driven Mini SOC for my Final Year Project.
             </p>
             <div class="typing-container">
                 <span id="typingText"></span><span class="cursor"></span>
@@ -52,20 +52,20 @@
                 <h2>About Me</h2>
                 <span class="underline"></span>
             </div>
-            <p>I'm a BSCS (7th semester) student at the University of Malakand, focused on cybersecurity. I work with Kali Linux, Parrot OS, and Metasploitable 3 VMs, and I'm building an open-source mini SOC as my Final Year Project.</p>
+            <p>I'm a BSCS (7th semester) student at the University of Malakand, focused on cybersecurity. My Final Year Project centers on designing and evaluating a lightweight alert correlation engine for a resource-constrained Mini SOC. I'm interested in SOC operations, threat detection, and open-source security tools.</p>
             <div class="skills">
                 <span class="skill-tag">Linux</span>
                 <span class="skill-tag">Networking</span>
                 <span class="skill-tag">VirtualBox</span>
                 <span class="skill-tag">Kali Linux</span>
                 <span class="skill-tag">Parrot OS</span>
-                <span class="skill-tag">Metasploitable 3</span>
                 <span class="skill-tag">Suricata IDS</span>
+                <span class="skill-tag">Wazuh SIEM</span>
             </div>
         </div>
     </section>
 
-    <!-- ★ Final Year Project ★ -->
+    <!-- Final Year Project -->
     <section id="fyp">
         <div class="container">
             <div class="section-title">
@@ -73,38 +73,79 @@
                 <span class="underline"></span>
             </div>
             <div class="fyp-card">
-                <div class="fyp-status">🟢 In Progress</div>
-                <h3>Open-Source Mini SOC for Automated Threat Detection</h3>
+                <div class="fyp-status">🟢 Working prototype — experiments starting</div>
+                <h3>Design and Evaluation of a Lightweight Alert Correlation Engine for a Mini SOC</h3>
                 <p class="fyp-desc">
-                    Designing and building a fully open-source Security Operations Center for small organizations
-                    that can't afford commercial SIEM tools. The system integrates Suricata (Network IDS),
-                    Wazuh (SIEM), and a custom Python correlation engine to detect, group, and prioritize
-                    internal threats with MITRE ATT&amp;CK mapping.
+                    A Bachelor's Final Year Project building a fully open-source Security Operations Center
+                    with a custom Python correlation engine. The system integrates Suricata, Wazuh, and Filebeat
+                    to detect, correlate, and prioritize internal network threats. Evaluated through a
+                    three-configuration comparison (network-only, host-only, correlated) across six attack
+                    scenarios and 180 controlled experiments. Built for small organizations that cannot afford
+                    commercial SIEM solutions.
                 </p>
 
-                <h4 class="fyp-subtitle">Key Features</h4>
+                <h4 class="fyp-subtitle">Research Question</h4>
+                <p class="fyp-text">
+                    Can a lightweight, rule-based correlation engine reduce duplicate SOC alerts
+                    while preserving detection coverage in a resource-constrained Mini SOC?
+                </p>
+
+                <h4 class="fyp-subtitle">What I Built</h4>
                 <ul class="fyp-list">
-                    <li>Real-time network intrusion detection with Suricata</li>
-                    <li>Centralized log collection and analysis with Wazuh</li>
-                    <li>Custom Python correlation engine with risk scoring</li>
-                    <li>MITRE ATT&amp;CK mapping for detected attacks</li>
+                    <li>Integrated Suricata + Wazuh + Filebeat + custom Python correlation engine</li>
+                    <li>4-VM isolated lab: Kali, Metasploitable 3, Windows 10, Ubuntu SOC-Server</li>
+                    <li>68,753 Suricata rules loaded, plus custom direction-agnostic detection rules</li>
+                    <li>Wazuh agents deployed on Linux and Windows endpoints</li>
+                    <li>MITRE ATT&amp;CK auto-mapping enabled</li>
                 </ul>
 
-                <div class="lab-tags" style="justify-content:flex-start; margin-top:1.2rem;">
+                <h4 class="fyp-subtitle">How I'm Evaluating It</h4>
+                <ul class="fyp-list">
+                    <li>Three configurations: network-only, host-only, correlated</li>
+                    <li>6 attack scenarios × 10 repetitions = 180 experiments</li>
+                    <li>Metrics: detection rate, false positives, latency, ATT&amp;CK coverage, alert reduction, resource use</li>
+                </ul>
+
+                <h4 class="fyp-subtitle">Stack</h4>
+                <div class="lab-tags" style="justify-content:flex-start; margin-bottom:1.5rem;">
                     <span>Suricata</span>
                     <span>Wazuh</span>
+                    <span>Filebeat</span>
                     <span>Python</span>
-                    <span>Ubuntu</span>
-                    <span>Kali</span>
+                    <span>Ubuntu Server</span>
+                    <span>Kali Linux</span>
                     <span>VirtualBox</span>
                     <span>Nmap</span>
+                    <span>Metasploit</span>
                     <span>MITRE ATT&amp;CK</span>
                 </div>
+
+                <a href="https://github.com/jawadahmad-sec/open-source-mini-soc-fyp" target="_blank" class="btn">
+                    🐙 View on GitHub
+                </a>
             </div>
         </div>
     </section>
 
-    <!-- Certificates (clickable to Credly) -->
+    <!-- Research Interests -->
+    <section id="research">
+        <div class="container">
+            <div class="section-title">
+                <h2>Research Interests</h2>
+                <span class="underline"></span>
+            </div>
+            <ul class="research-list">
+                <li>Security Operations Centers (SOC)</li>
+                <li>Alert Correlation and Incident Prioritization</li>
+                <li>Intrusion Detection Systems (IDS)</li>
+                <li>Threat Detection with MITRE ATT&amp;CK</li>
+                <li>Open-Source Security for Resource-Constrained Environments</li>
+                <li>Python Automation for Cybersecurity</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Certificates (clickable) -->
     <section id="certificates">
         <div class="container">
             <div class="section-title">
@@ -164,22 +205,6 @@
                     <h3>HTB Offensive Security</h3>
                     <p>Exposure to offensive methods</p>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Learning -->
-    <section id="learning">
-        <div class="container">
-            <div class="section-title">
-                <h2>Currently Learning</h2>
-                <span class="underline"></span>
-            </div>
-            <div class="grid">
-                <div class="card"><h3>🐧 Linux Administration</h3><p>Command line, users, permissions</p></div>
-                <div class="card"><h3>📊 SOC Fundamentals</h3><p>Log analysis, alert triage</p></div>
-                <div class="card"><h3>🌐 Networking Deep Dive</h3><p>TCP/IP, subnetting, firewalls</p></div>
-                <div class="card"><h3>🛡️ Blue Team Tools</h3><p>Suricata, Wazuh, SIEM basics</p></div>
             </div>
         </div>
     </section>
