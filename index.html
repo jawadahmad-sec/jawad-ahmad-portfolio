@@ -1,26 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    
+
     <!-- Primary SEO Meta Tags -->
     <title>Jawad Ahmad | Cyber Security & Mini SOC Portfolio</title>
-    <meta name="description" content="Jawad Ahmad - BSCS student at University of Malakand. Specializing in Cyber Security, SOC operations, and open-source security tools. Building a research-driven Mini SOC for threat detection." />
-    <meta name="keywords" content="Jawad Ahmad, Cyber Security, SOC Analyst, Mini SOC, Suricata, Wazuh, University of Malakand, Blue Team, Threat Detection" />
+    <meta name="description"
+        content="Jawad Ahmad - BSCS student at University of Malakand. Specializing in Cyber Security, SOC operations, and open-source security tools. Building a research-driven Mini SOC for threat detection." />
+    <meta name="keywords"
+        content="Jawad Ahmad, Cyber Security, SOC Analyst, Mini SOC, Suricata, Wazuh, University of Malakand, Blue Team, Threat Detection" />
     <meta name="author" content="Jawad Ahmad" />
-    
+
     <!-- Open Graph / Social Media (For sharing links) -->
     <meta property="og:title" content="Jawad Ahmad | Cyber Security Portfolio" />
-    <meta property="og:description" content="BSCS student building an open-source Mini SOC. View my Final Year Project, labs, and certifications." />
+    <meta property="og:description"
+        content="BSCS student building an open-source Mini SOC. View my Final Year Project, labs, and certifications." />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://jawadahmad-sec.github.io/jawad-ahmad-portfolio/" />
-    
+
     <!-- Canonical URL (Prevents duplicate content issues) -->
     <link rel="canonical" href="https://jawadahmad-sec.github.io/jawad-ahmad-portfolio/" />
-    
+
     <link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
     <nav class="navbar">
         <div class="nav-container">
@@ -65,7 +70,10 @@
                 <h2>About Me</h2>
                 <span class="underline"></span>
             </div>
-            <p>I'm a BSCS (7th semester) student at the University of Malakand, focused on cybersecurity. My Final Year Project centers on designing and evaluating a lightweight alert correlation engine for a resource-constrained Mini SOC. I'm interested in SOC operations, threat detection, and open-source security tools.</p>
+            <p>I'm a BSCS (7th semester) student at the University of Malakand, focused on cybersecurity. My Final Year
+                Project centers on designing and evaluating a lightweight alert correlation engine for a
+                resource-constrained Mini SOC. I'm interested in SOC operations, threat detection, and open-source
+                security tools.</p>
             <div class="skills">
                 <span class="skill-tag">Linux</span>
                 <span class="skill-tag">Networking</span>
@@ -86,7 +94,7 @@
                 <span class="underline"></span>
             </div>
             <div class="fyp-card">
-                <div class="fyp-status">🟢 Working prototype — experiments starting</div>
+                <div class="fyp-status">🟢 Live SOC detecting incidents — experiments next</div>
                 <h3>Design and Evaluation of a Lightweight Alert Correlation Engine for a Mini SOC</h3>
                 <p class="fyp-desc">
                     A Bachelor's Final Year Project building a fully open-source Security Operations Center
@@ -103,6 +111,14 @@
                     while preserving detection coverage in a resource-constrained Mini SOC?
                 </p>
 
+                <h4 class="fyp-subtitle">Current Status</h4>
+                <ul class="fyp-list">
+                    <li>✅ Working SOC with 3 monitored endpoints (Linux, Windows, SOC-Server)</li>
+                    <li>✅ 1,200+ alerts collected and indexed in Wazuh</li>
+                    <li>✅ Custom Python correlation engine detecting real incidents</li>
+                    <li>✅ 10 MITRE ATT&amp;CK techniques auto-mapped from live attacks</li>
+                    <li>✅ First correlated incident detected — 3 alerts → 1 incident</li>
+                </ul>
                 <h4 class="fyp-subtitle">What I Built</h4>
                 <ul class="fyp-list">
                     <li>Integrated Suricata + Wazuh + Filebeat + custom Python correlation engine</li>
@@ -116,7 +132,8 @@
                 <ul class="fyp-list">
                     <li>Three configurations: network-only, host-only, correlated</li>
                     <li>6 attack scenarios × 10 repetitions = 180 experiments</li>
-                    <li>Metrics: detection rate, false positives, latency, ATT&amp;CK coverage, alert reduction, resource use</li>
+                    <li>Metrics: detection rate, false positives, latency, ATT&amp;CK coverage, alert reduction,
+                        resource use</li>
                 </ul>
 
                 <h4 class="fyp-subtitle">Stack</h4>
@@ -259,4 +276,5 @@
 
     <script src="script.js"></script>
 </body>
+
 </html>
